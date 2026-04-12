@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villa Fiesta | Eventos inolvidables</title>
+  <meta
+    name="description"
+    content="Villa Fiesta - El lugar perfecto para bodas, cumpleaños y eventos corporativos."
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header" id="inicio">
+    <div class="container nav-container">
+      <a href="#inicio" class="logo">Villa Fiesta</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav" id="navMenu">
+        <a href="#inicio">Inicio</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#galeria">Galería</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a href="#contacto" class="btn btn-gold desktop-btn">Reserva Ahora</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-slider">
+      <div class="hero-slide active" style="background-image: url('img/hero-1.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('img/hero-2.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('img/hero-3.jpg');"></div>
+    </div>
+
+    <div class="container hero-content">
+      <h1>El Lugar <span>Perfecto</span><br />para tus <em>Eventos</em></h1>
+      <p>
+        Creamos experiencias elegantes e inolvidables para bodas, cumpleaños y
+        celebraciones corporativas.
+      </p>
+      <a href="#eventos" class="btn btn-primary">Conoce Más</a>
+
+      <div class="hero-dots" id="heroDots">
+        <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
+        <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+        <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section events-section" id="eventos">
+      <div class="container">
+        <div class="triple-heading">
+          <div class="heading-item">
+            <span class="line"></span>
+            <h2>Bodas</h2>
+            <span class="line"></span>
+          </div>
+          <div class="heading-item">
+            <span class="line"></span>
+            <h2>Cumpleaños</h2>
+            <span class="line"></span>
+          </div>
+          <div class="heading-item">
+            <span class="line"></span>
+            <h2>Eventos Corporativos</h2>
+            <span class="line"></span>
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <article class="event-card">
+            <img src="img/boda.jpg" alt="Evento de boda" />
+            <div class="card-footer">
+              <a href="#contacto" class="btn btn-primary small">Ver Más</a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <img src="img/cumpleanos.jpg" alt="Evento de cumpleaños" />
+            <div class="card-footer">
+              <a href="#contacto" class="btn btn-primary small">Ver Más</a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <img src="img/corporativo.jpg" alt="Evento corporativo" />
+            <div class="card-footer">
+              <a href="#contacto" class="btn btn-primary small">Ver Más</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section">
+      <div class="container about-wrapper">
+        <div class="about-image">
+          <img src="img/about.jpg" alt="Salón de eventos elegante" />
+        </div>
+
+        <div class="about-content">
+          <div class="section-title left">
+            <span class="line"></span>
+            <h2>Sobre Nosotros</h2>
+          </div>
+
+          <p>
+            Somos un espacio exclusivo diseñado para celebrar momentos
+            inolvidables. En Villa Fiesta combinamos elegancia, calidez y una
+            atención personalizada para que cada evento sea único.
+          </p>
+
+          <p>
+            Nuestro equipo se encarga de cada detalle: decoración, ambientación,
+            coordinación, banquetería y asistencia integral para que tú solo te
+            preocupes de disfrutar.
+          </p>
+
+          <a href="#contacto" class="btn btn-primary">Leer Más</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="servicios">
+      <div class="container">
+        <div class="section-title center">
+          <span class="line"></span>
+          <h2>Nuestros Servicios</h2>
+          <span class="line"></span>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-item">
+            <div class="service-icon">🍽</div>
+            <h3>Banquetes Exquisitos</h3>
+          </article>
+
+          <article class="service-item">
+            <div class="service-icon">✨</div>
+            <h3>Decoración & Ambientación</h3>
+          </article>
+
+          <article class="service-item">
+            <div class="service-icon">🎵</div>
+            <h3>Música & DJ</h3>
+          </article>
+
+          <article class="service-item">
+            <div class="service-icon">🛎</div>
+            <h3>Coordinación de Eventos</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="galeria">
+      <div class="container">
+        <div class="gallery-header">
+          <div class="section-title center no-margin">
+            <span class="line"></span>
+            <h2>Galería de Eventos</h2>
+            <span class="line"></span>
+          </div>
+
+          <a href="#contacto" class="btn btn-primary small">Ver Galería Completa</a>
+        </div>
+
+        <div class="gallery-grid">
+          <img src="img/galeria-1.jpg" alt="Mesa decorada para evento" />
+          <img src="img/galeria-2.jpg" alt="Decoración floral elegante" />
+          <img src="img/galeria-3.jpg" alt="Evento corporativo en salón" />
+          <img src="img/galeria-4.jpg" alt="Evento al aire libre" />
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <div class="contact-overlay"></div>
+      <div class="container contact-wrapper">
+        <div class="contact-info">
+          <div class="section-title left light">
+            <h2>Contáctanos</h2>
+            <span class="line"></span>
+          </div>
+
+          <p class="contact-text">Reserva tu fecha con nosotros</p>
+
+          <ul>
+            <li>📞 +56 9 1234 5678</li>
+            <li>✉ info@villafiesta.cl</li>
+            <li>📍 Camino Las Flores 123, Santiago</li>
+          </ul>
+
+          <div class="socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">◎</a>
+            <a href="#" aria-label="Twitter">x</a>
+          </div>
+        </div>
+
+        <div class="contact-form-box">
+          <div class="section-title left light">
+            <h2>Envíanos un Mensaje</h2>
+            <span class="line"></span>
+          </div>
+
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <input type="text" id="nombre" name="nombre" placeholder="Nombre" />
+              <input type="email" id="email" name="email" placeholder="Email" />
+            </div>
+
+            <input type="text" id="telefono" name="telefono" placeholder="Teléfono" />
+            <textarea id="mensaje" name="mensaje" placeholder="Mensaje"></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+
+            <p id="formMessage" class="form-message"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2022 Villa Fiesta. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
