@@ -4,55 +4,55 @@ const productos = [
     nombre: "Paquete Boda Esencial",
     precio: 850000,
     categoria: "Bodas",
-    img: "https://via.placeholder.com/600x400/f7d6e6/6d214f?text=Boda+Esencial",
-    descripcion: "Espacio decorado, mobiliario básico y ambientación romántica para una celebración elegante."
+    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80",
+    descripcion: "Espacio decorado, mobiliario básico y ambientación elegante para una celebración memorable."
   },
   {
     id: 2,
     nombre: "Paquete Boda Premium",
     precio: 1800000,
     categoria: "Bodas",
-    img: "https://via.placeholder.com/600x400/f4c2d7/6d214f?text=Boda+Premium",
-    descripcion: "Incluye decoración premium, zona de fotos, montaje especial y apoyo logístico."
+    img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80",
+    descripcion: "Incluye decoración premium, zona de fotos, montaje especial y acompañamiento logístico."
   },
   {
     id: 3,
     nombre: "Cumpleaños Infantil Mágico",
     precio: 420000,
     categoria: "Cumpleaños",
-    img: "https://via.placeholder.com/600x400/ffe0e9/7e2d5f?text=Cumpleaños+Infantil",
-    descripcion: "Decoración temática, mesa principal y montaje ideal para fiestas infantiles memorables."
+    img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80",
+    descripcion: "Decoración temática, mesa principal y montaje ideal para celebraciones infantiles."
   },
   {
     id: 4,
     nombre: "Cumpleaños Adulto Elegante",
     precio: 560000,
     categoria: "Cumpleaños",
-    img: "https://via.placeholder.com/600x400/f8d7e8/7e2d5f?text=Cumpleaños+Adulto",
-    descripcion: "Espacio decorado con estilo moderno para reuniones, cumpleaños sorpresa o celebraciones privadas."
+    img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80",
+    descripcion: "Ambiente moderno y distinguido para reuniones privadas y celebraciones especiales."
   },
   {
     id: 5,
     nombre: "Evento Empresarial Básico",
     precio: 950000,
     categoria: "Empresariales",
-    img: "https://via.placeholder.com/600x400/ead4ff/5a189a?text=Evento+Empresarial",
-    descripcion: "Salón acondicionado para capacitaciones, reuniones corporativas y lanzamientos de marca."
+    img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
+    descripcion: "Salón acondicionado para reuniones corporativas, capacitaciones y presentaciones."
   },
   {
     id: 6,
     nombre: "Evento Empresarial Full",
     precio: 1650000,
     categoria: "Empresariales",
-    img: "https://via.placeholder.com/600x400/e2d3ff/5a189a?text=Empresarial+Full",
-    descripcion: "Montaje ejecutivo, decoración profesional y espacio ideal para eventos de alto impacto."
+    img: "https://images.unsplash.com/photo-1511795409834-432f7b1d82b4?auto=format&fit=crop&w=900&q=80",
+    descripcion: "Montaje ejecutivo con presentación profesional para eventos de alto impacto."
   },
   {
     id: 7,
     nombre: "Decoración Temática Deluxe",
     precio: 380000,
     categoria: "Decoración",
-    img: "https://via.placeholder.com/600x400/ffd6f0/a63d7c?text=Decoración+Deluxe",
+    img: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=900&q=80",
     descripcion: "Diseño visual personalizado con globos, paleta de color y detalles decorativos destacados."
   },
   {
@@ -60,8 +60,8 @@ const productos = [
     nombre: "Mesa Principal y Backing",
     precio: 290000,
     categoria: "Decoración",
-    img: "https://via.placeholder.com/600x400/fde2f3/a63d7c?text=Mesa+Principal",
-    descripcion: "Incluye mesa decorada, fondo para fotos y presentación visual perfecta para el evento."
+    img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80",
+    descripcion: "Incluye mesa decorada, fondo para fotos y una presentación visual impactante."
   }
 ];
 
@@ -121,6 +121,78 @@ function obtenerCategoriaPreferida() {
   }
 
   return null;
+}
+
+function irAPago() {
+  const panelPago = document.getElementById("panel-pago");
+  if (panelPago) {
+    panelPago.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function irAMediosPago() {
+  const mediosPago = document.getElementById("medios-pago");
+  if (mediosPago) {
+    mediosPago.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+}
+
+/* =========================
+   CARRUSEL HERO
+========================= */
+let slideActual = 0;
+let autoSlide;
+
+function obtenerSlides() {
+  return document.querySelectorAll(".slide");
+}
+
+function obtenerDots() {
+  return document.querySelectorAll(".dot");
+}
+
+function mostrarSlide(index) {
+  const slides = obtenerSlides();
+  const dots = obtenerDots();
+
+  if (!slides.length) return;
+
+  if (index < 0) {
+    slideActual = slides.length - 1;
+  } else if (index >= slides.length) {
+    slideActual = 0;
+  } else {
+    slideActual = index;
+  }
+
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === slideActual);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === slideActual);
+  });
+}
+
+function moverCarrusel(direccion) {
+  mostrarSlide(slideActual + direccion);
+  reiniciarAutoSlide();
+}
+
+function irASlide(index) {
+  mostrarSlide(index);
+  reiniciarAutoSlide();
+}
+
+function iniciarAutoSlide() {
+  autoSlide = setInterval(() => {
+    mostrarSlide(slideActual + 1);
+  }, 5000);
+}
+
+function reiniciarAutoSlide() {
+  clearInterval(autoSlide);
+  iniciarAutoSlide();
 }
 
 /* =========================
@@ -184,8 +256,8 @@ function renderRecomendados() {
   const seleccionados = candidatos.slice(0, 4);
 
   tituloRecomendados.textContent = categoriaPreferida
-    ? `🌟 Recomendados en ${categoriaPreferida}`
-    : "🌟 Recomendados para ti";
+    ? `Recomendados en ${categoriaPreferida}`
+    : "Recomendados para ti";
 
   recomendadosContainer.innerHTML = "";
 
@@ -455,7 +527,7 @@ if (window.paypal) {
               currency_code: "COP",
               value: total.toFixed(0)
             },
-            description: "Reserva de servicios - Casa de Eventos Brillo Real"
+            description: "Reserva de servicios - Casa de Eventos Golden Dream"
           }
         ]
       });
@@ -488,3 +560,5 @@ cargarCarrito();
 renderRecomendados();
 renderTopElo();
 generarDuelo();
+mostrarSlide(0);
+iniciarAutoSlide();
