@@ -1,86 +1,52 @@
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
-const navLinks = document.querySelectorAll(".nav a");
-
-if (menuToggle && navMenu) {
-  menuToggle.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-  });
-
-  navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      navMenu.classList.remove("active");
-    });
-  });
+const productos = [
+  {
+    id: 1,
+    nombre: "Paquete Boda Clásica",
+    precio: 250000,
+    categoria: "Bodas",
+    img: "img/boda-clasica.jpg"
+  },
+  {
+    id: 2,
+    nombre: "Paquete Cumpleaños Premium",
+    precio: 180000,
+    categoria: "Cumpleaños",
+    img: "img/cumple-premium.jpg"
+  },
+  {
+    id: 3,
+    nombre: "Evento Corporativo Gold",
+    precio: 320000,
+    categoria: "Corporativos",
+    img: "img/corporativo-gold.jpg"
+  }
+];
+const contenedorProductos = document.getElementById("productos");
+function formatearPrecio(valor) {
+  return new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(valor);
 }
 
-// Slider hero
-const slides = document.querySelectorAll(".hero-slide");
-const dots = document.querySelectorAll(".dot");
-let currentSlide = 0;
-let autoSlide;
+function renderProductos(lista = productos) {
+  contenedorProductos.innerHTML = "";
 
-function showSlide(index) {
-  slides.forEach((slide) => slide.classList.remove("active"));
-  dots.forEach((dot) => dot.classList.remove("active"));
+  lista.forEach(prod => {
+    const card = document.createElement("article");
+    card.className = "producto";
 
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
-  currentSlide = index;
-}
+    card.innerHTML = `
+      <img src="${prod.img}" alt="${prod.nombre}">
+      <h3>${prod.nombre}</h3>
+      <p>${formatearPrecio(prod.precio)}</p>
+      <button onclick="agregarAlCarrito(${prod.id})">Agregar</button>
+    `;
 
-function nextSlide() {
-  let next = currentSlide + 1;
-  if (next >= slides.length) next = 0;
-  showSlide(next);
-}
-
-function startSlider() {
-  autoSlide = setInterval(nextSlide, 5000);
-}
-
-function resetSlider() {
-  clearInterval(autoSlide);
-  startSlider();
-}
-
-if (slides.length > 0 && dots.length > 0) {
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      showSlide(index);
-      resetSlider();
-    });
-  });
-
-  showSlide(0);
-  startSlider();
-}
-
-// Formulario
-const contactForm = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
-
-if (contactForm) {
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const nombre = document.getElementById("nombre").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const mensaje = document.getElementById("mensaje").value.trim();
-
-    if (!nombre || !email || !telefono || !mensaje) {
-      formMessage.textContent = "Por favor completa todos los campos.";
-      return;
-    }
-
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailValido.test(email)) {
-      formMessage.textContent = "Por favor ingresa un correo válido.";
-      return;
-    }
-
-    formMessage.textContent = "Tu mensaje fue enviado correctamente.";
-    contactForm.reset();
+    contenedorProductos.appendChild(card);
   });
 }
+
+renderProductos();
