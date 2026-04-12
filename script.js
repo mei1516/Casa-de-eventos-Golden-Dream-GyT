@@ -1,67 +1,67 @@
 const productos = [
   {
     id: 1,
-    nombre: "Paquete Boda Esencial",
+    nombre: "Espacio para bodas",
     precio: 850000,
     categoria: "Bodas",
     img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Espacio decorado, mobiliario básico y ambientación elegante para una celebración memorable."
+    descripcion: "Ambiente elegante y organizado para celebraciones matrimoniales con atención cuidada."
   },
   {
     id: 2,
-    nombre: "Paquete Boda Premium",
-    precio: 1800000,
+    nombre: "Decoración para boda",
+    precio: 620000,
     categoria: "Bodas",
     img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Incluye decoración premium, zona de fotos, montaje especial y acompañamiento logístico."
+    descripcion: "Propuesta visual sobria y armónica para acompañar uno de los días más importantes."
   },
   {
     id: 3,
-    nombre: "Cumpleaños Infantil Mágico",
+    nombre: "Celebración de cumpleaños",
     precio: 420000,
     categoria: "Cumpleaños",
     img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Decoración temática, mesa principal y montaje ideal para celebraciones infantiles."
+    descripcion: "Espacio preparado para reuniones familiares y celebraciones especiales con buena ambientación."
   },
   {
     id: 4,
-    nombre: "Cumpleaños Adulto Elegante",
-    precio: 560000,
+    nombre: "Decoración de cumpleaños",
+    precio: 360000,
     categoria: "Cumpleaños",
     img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Ambiente moderno y distinguido para reuniones privadas y celebraciones especiales."
+    descripcion: "Montaje decorativo adaptable al estilo de tu celebración y al tipo de encuentro."
   },
   {
     id: 5,
-    nombre: "Evento Empresarial Básico",
+    nombre: "Evento empresarial",
     precio: 950000,
     categoria: "Empresariales",
     img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Salón acondicionado para reuniones corporativas, capacitaciones y presentaciones."
+    descripcion: "Espacio apto para reuniones corporativas, presentaciones y encuentros profesionales."
   },
   {
     id: 6,
-    nombre: "Evento Empresarial Full",
-    precio: 1650000,
+    nombre: "Ambientación corporativa",
+    precio: 540000,
     categoria: "Empresariales",
     img: "https://images.unsplash.com/photo-1511795409834-432f7b1d82b4?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Montaje ejecutivo con presentación profesional para eventos de alto impacto."
+    descripcion: "Presentación organizada y formal para fortalecer la imagen de tus eventos empresariales."
   },
   {
     id: 7,
-    nombre: "Decoración Temática Deluxe",
+    nombre: "Decoración temática",
     precio: 380000,
     categoria: "Decoración",
     img: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Diseño visual personalizado con globos, paleta de color y detalles decorativos destacados."
+    descripcion: "Diseño decorativo personalizado para transformar el espacio según tu ocasión."
   },
   {
     id: 8,
-    nombre: "Mesa Principal y Backing",
+    nombre: "Mesa principal y ambientación",
     precio: 290000,
     categoria: "Decoración",
     img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Incluye mesa decorada, fondo para fotos y una presentación visual impactante."
+    descripcion: "Composición visual elegante para destacar el centro del evento de forma estética."
   }
 ];
 
@@ -138,64 +138,6 @@ function irAMediosPago() {
 }
 
 /* =========================
-   CARRUSEL HERO
-========================= */
-let slideActual = 0;
-let autoSlide;
-
-function obtenerSlides() {
-  return document.querySelectorAll(".slide");
-}
-
-function obtenerDots() {
-  return document.querySelectorAll(".dot");
-}
-
-function mostrarSlide(index) {
-  const slides = obtenerSlides();
-  const dots = obtenerDots();
-
-  if (!slides.length) return;
-
-  if (index < 0) {
-    slideActual = slides.length - 1;
-  } else if (index >= slides.length) {
-    slideActual = 0;
-  } else {
-    slideActual = index;
-  }
-
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === slideActual);
-  });
-
-  dots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === slideActual);
-  });
-}
-
-function moverCarrusel(direccion) {
-  mostrarSlide(slideActual + direccion);
-  reiniciarAutoSlide();
-}
-
-function irASlide(index) {
-  mostrarSlide(index);
-  reiniciarAutoSlide();
-}
-
-function iniciarAutoSlide() {
-  autoSlide = setInterval(() => {
-    mostrarSlide(slideActual + 1);
-  }, 5000);
-}
-
-function reiniciarAutoSlide() {
-  clearInterval(autoSlide);
-  iniciarAutoSlide();
-}
-
-/* =========================
    RENDER PRODUCTOS
 ========================= */
 function renderProductos(lista = productos) {
@@ -209,8 +151,8 @@ function renderProductos(lista = productos) {
       <span class="categoria-chip">${prod.categoria}</span>
       <h3>${prod.nombre}</h3>
       <p class="descripcion-producto">${prod.descripcion}</p>
-      <p>${formatearPrecio(prod.precio)}</p>
-      <button onclick="agregarAlCarrito(${prod.id})">Agregar al carrito</button>
+      <p class="texto-reserva">Reserva disponible</p>
+      <button onclick="agregarAlCarrito(${prod.id})">Agregar a reserva</button>
     `;
     contenedorProductos.appendChild(div);
   });
@@ -256,8 +198,8 @@ function renderRecomendados() {
   const seleccionados = candidatos.slice(0, 4);
 
   tituloRecomendados.textContent = categoriaPreferida
-    ? `Recomendados en ${categoriaPreferida}`
-    : "Recomendados para ti";
+    ? `Servicios recomendados en ${categoriaPreferida}`
+    : "Servicios recomendados";
 
   recomendadosContainer.innerHTML = "";
 
@@ -269,8 +211,8 @@ function renderRecomendados() {
       <div class="recomendado-info">
         <h3>${producto.nombre}</h3>
         <p>${producto.categoria}</p>
-        <p class="precio-recomendado">${formatearPrecio(producto.precio)}</p>
-        <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+        <p class="precio-recomendado">Reserva disponible</p>
+        <button onclick="agregarAlCarrito(${producto.id})">Agregar a reserva</button>
       </div>
     `;
     recomendadosContainer.appendChild(card);
@@ -325,7 +267,7 @@ function actualizarCarrito() {
   listaCarrito.innerHTML = "";
 
   if (carrito.size === 0) {
-    listaCarrito.innerHTML = `<li class="carrito-vacio">Tu carrito está vacío.</li>`;
+    listaCarrito.innerHTML = `<li class="carrito-vacio">No has seleccionado servicios todavía.</li>`;
     totalCarrito.textContent = formatearPrecio(0);
     cantidadCarrito.textContent = "0";
     contenedorPayPal.style.display = "none";
@@ -345,7 +287,7 @@ function actualizarCarrito() {
     li.innerHTML = `
       <strong>${item.nombre}</strong>
       <div class="item-detalle">
-        ${formatearPrecio(item.precio)} x ${item.cantidad} = ${formatearPrecio(subtotal)}
+        Selección x ${item.cantidad} = ${formatearPrecio(subtotal)}
       </div>
       <div class="controles-cantidad">
         <button onclick="cambiarCantidad(${item.id}, -1)">−</button>
@@ -364,7 +306,7 @@ function actualizarCarrito() {
 function vaciarCarrito(confirmar = true) {
   if (carrito.size === 0) return;
 
-  if (!confirmar || confirm("¿Seguro que quieres vaciar el carrito?")) {
+  if (!confirmar || confirm("¿Seguro que quieres vaciar la selección?")) {
     carrito.clear();
     guardarCarrito();
     actualizarCarrito();
@@ -373,7 +315,7 @@ function vaciarCarrito(confirmar = true) {
 
 function finalizarCompra() {
   if (carrito.size === 0) {
-    alert("Tu carrito está vacío. Agrega servicios antes de pagar.");
+    alert("Tu selección está vacía. Agrega servicios antes de continuar.");
     return;
   }
 
@@ -474,14 +416,14 @@ function generarDuelo() {
     <div class="duelo-card">
       <img src="${p1.img}" alt="${p1.nombre}">
       <h3>${p1.nombre}</h3>
-      <p>${formatearPrecio(p1.precio)} · ELO ${ratings[p1.id]}</p>
+      <p>Reserva disponible · ELO ${ratings[p1.id]}</p>
       <button onclick="votarDuelo(${p1.id}, ${p2.id})">Elegir este</button>
     </div>
 
     <div class="duelo-card">
       <img src="${p2.img}" alt="${p2.nombre}">
       <h3>${p2.nombre}</h3>
-      <p>${formatearPrecio(p2.precio)} · ELO ${ratings[p2.id]}</p>
+      <p>Reserva disponible · ELO ${ratings[p2.id]}</p>
       <button onclick="votarDuelo(${p2.id}, ${p1.id})">Elegir este</button>
     </div>
   `;
@@ -527,7 +469,7 @@ if (window.paypal) {
               currency_code: "COP",
               value: total.toFixed(0)
             },
-            description: "Reserva de servicios - Casa de Eventos Golden Dream"
+            description: "Reserva de servicios - Casa de Eventos Golden Dream G y T"
           }
         ]
       });
@@ -560,5 +502,3 @@ cargarCarrito();
 renderRecomendados();
 renderTopElo();
 generarDuelo();
-mostrarSlide(0);
-iniciarAutoSlide();
