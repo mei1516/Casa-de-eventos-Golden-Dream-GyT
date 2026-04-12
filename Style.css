@@ -1,162 +1,618 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Villa Fiesta</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="contenedor nav">
-      <a href="#" class="logo">Villa Fiesta</a>
-      <nav class="menu">
-        <a href="#inicio">Inicio</a>
-        <a href="#galeria">Galería</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-      <a
-        class="btn btn-nav"
-        target="_blank"
-        href="https://wa.me/573001234567?text=Hola,%20quiero%20información%20sobre%20Villa%20Fiesta"
-      >
-        Reserva Ahora
-      </a>
-    </div>
-  </header>
+* {
+  box-sizing: border-box;
+}
 
-  <section class="hero" id="inicio">
-    <div class="overlay"></div>
-    <div class="contenedor hero-contenido">
-      <p class="etiqueta">Eventos elegantes y memorables</p>
-      <h1>El lugar perfecto<br>para tus eventos</h1>
-      <p class="hero-texto">
-        Bodas, cumpleaños y eventos corporativos con ambientación elegante,
-        atención personalizada y experiencias inolvidables.
-      </p>
-      <div class="hero-botones">
-        <a href="#servicios" class="btn">Conoce Más</a>
-        <a
-          target="_blank"
-          href="https://wa.me/573001234567?text=Hola,%20quiero%20cotizar%20un%20evento"
-          class="btn btn-secundario"
-        >
-          Escríbenos
-        </a>
-      </div>
-    </div>
-  </section>
+:root {
+  --fondo: #fff8f5;
+  --fondo-secundario: #ffffff;
+  --texto: #2f1f2f;
+  --texto-suave: #6b5a6a;
+  --principal: #a63d7c;
+  --principal-oscuro: #7e2d5f;
+  --secundario: #f2b5d4;
+  --acento: #ffd166;
+  --borde: #ecd8e7;
+  --sombra: 0 12px 30px rgba(166, 61, 124, 0.12);
+}
 
-  <section class="seccion" id="galeria">
-    <div class="contenedor">
-      <h2 class="titulo-seccion">Galería destacada</h2>
-      <div class="galeria-grid">
-        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80" alt="Boda">
-        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80" alt="Evento">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80" alt="Celebración">
-      </div>
-    </div>
-  </section>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #fff6fb, #fff8f5);
+  color: var(--texto);
+}
 
-  <section class="seccion beneficios">
-    <div class="contenedor">
-      <h2 class="titulo-seccion">¿Por qué elegirnos?</h2>
-      <div class="beneficios-grid">
-        <article class="beneficio">
-          <h3>Decoración premium</h3>
-          <p>Montajes elegantes y personalizados para cada ocasión.</p>
-        </article>
-        <article class="beneficio">
-          <h3>Atención personalizada</h3>
-          <p>Te acompañamos desde la idea hasta el día del evento.</p>
-        </article>
-        <article class="beneficio">
-          <h3>Pago fácil</h3>
-          <p>Trabajamos con WhatsApp, transferencia y PayPal.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+.contenedor-principal {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 24px 0 50px;
+}
 
-  <main class="contenedor layout" id="servicios">
-    <section class="catalogo">
-      <div class="catalogo-top">
-        <div>
-          <p class="subtitulo-catalogo">Planea tu celebración</p>
-          <h2>Nuestros Servicios</h2>
-        </div>
+.hero {
+  background: linear-gradient(135deg, #fff0f8, #ffe7f1);
+  padding: 28px;
+  border-radius: 24px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: var(--sombra);
+  border: 1px solid #f3d6e6;
+}
 
-        <select id="categoria">
-          <option value="todos">Todos</option>
-          <option value="Bodas">Bodas</option>
-          <option value="Cumpleaños">Cumpleaños</option>
-          <option value="Corporativos">Corporativos</option>
-        </select>
-      </div>
+.hero-badge {
+  display: inline-block;
+  background: var(--principal);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: bold;
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+}
 
-      <div id="productos" class="productos"></div>
-    </section>
+.hero h1 {
+  margin: 0 0 10px;
+  color: var(--principal-oscuro);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
 
-    <aside class="carrito">
-      <h2>🛒 Tu carrito</h2>
-      <p class="carrito-texto">Agrega servicios y cotiza tu evento.</p>
+.hero p {
+  margin: 0 auto 18px;
+  color: var(--texto-suave);
+  max-width: 760px;
+  line-height: 1.6;
+}
 
-      <ul id="lista-carrito"></ul>
+.hero-info {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
 
-      <div class="resumen">
-        <p><strong>Total:</strong> <span id="total">$0</span></p>
-      </div>
+.hero-info span {
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid #f0d9e7;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
 
-      <div class="acciones">
-        <button onclick="vaciarCarrito()">Vaciar carrito</button>
+.filtros {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.85);
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid #efd7e4;
+}
 
-        <a
-          id="btn-whatsapp"
-          class="btn-whatsapp"
-          target="_blank"
-          href="https://wa.me/573001234567?text=Hola,%20quiero%20información"
-        >
-          Pedir por WhatsApp
-        </a>
-      </div>
+.filtros label {
+  font-weight: bold;
+}
 
-      <div class="pago-box">
-        <h3>Medios de pago</h3>
-        <div class="pagos-grid">
-          <span>PayPal</span>
-          <span>Nequi</span>
-          <span>Daviplata</span>
-          <span>Transferencia</span>
-        </div>
-      </div>
+.filtros select {
+  padding: 9px 12px;
+  border-radius: 10px;
+  border: 1px solid #e6cddd;
+  outline: none;
+  font-weight: bold;
+  background: #fff;
+  color: var(--texto);
+}
 
-      <div class="pago-box">
-        <h3>Pagar con PayPal</h3>
-        <div id="paypal-button-container"></div>
-      </div>
-    </aside>
-  </main>
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-bottom: 34px;
+}
 
-  <section class="seccion contacto" id="contacto">
-    <div class="contenedor contacto-box">
-      <div>
-        <h2>Contáctanos</h2>
-        <p><strong>WhatsApp:</strong> +57 300 123 4567</p>
-        <p><strong>Instagram:</strong> @villafiestaeventos</p>
-        <p><strong>Ciudad:</strong> Bogotá, Colombia</p>
-      </div>
-      <a
-        class="btn"
-        target="_blank"
-        href="https://wa.me/573001234567?text=Hola,%20quiero%20cotizar%20mi%20evento"
-      >
-        Hablar ahora
-      </a>
-    </div>
-  </section>
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
 
-  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=COP"></script>
-  <script src="script.js"></script>
-</body>
-</html>
+.producto {
+  background: var(--fondo-secundario);
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  padding: 14px;
+  text-align: center;
+  box-shadow: var(--sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.producto:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(166, 61, 124, 0.16);
+}
+
+.producto img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  background: #f6ecf2;
+}
+
+.producto .categoria-chip {
+  display: inline-block;
+  background: #fde3ef;
+  color: var(--principal-oscuro);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.producto h3 {
+  font-size: 1rem;
+  min-height: 48px;
+  margin: 8px 0;
+}
+
+.producto .descripcion-producto {
+  color: var(--texto-suave);
+  font-size: 0.93rem;
+  line-height: 1.5;
+  min-height: 66px;
+  margin-bottom: 10px;
+}
+
+.producto p {
+  color: var(--principal-oscuro);
+  font-weight: bold;
+  margin: 8px 0 12px;
+  font-size: 1.05rem;
+}
+
+.producto button,
+.carrito button,
+.duelo-card button,
+.reset-elo,
+.recomendado-card button {
+  border: none;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.producto button:hover,
+.carrito button:hover,
+.duelo-card button:hover,
+.reset-elo:hover,
+.recomendado-card button:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
+.producto button,
+.recomendado-card button {
+  background: linear-gradient(135deg, var(--principal), var(--principal-oscuro));
+  width: 100%;
+}
+
+.carrito {
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 20px;
+  align-self: start;
+  border: 1px solid var(--borde);
+}
+
+.carrito h2 {
+  margin-top: 0;
+  color: var(--principal-oscuro);
+}
+
+.contador-carrito {
+  background: #fff4c8;
+  border: 1px solid #f7df7e;
+  padding: 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #6d5200;
+}
+
+#lista-carrito {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+
+.item-carrito {
+  background: #fff8fc;
+  border: 1px solid #ecd8e7;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.item-carrito strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.item-detalle {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+  margin-bottom: 10px;
+}
+
+.controles-cantidad {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.controles-cantidad button {
+  background: #8a4fff;
+  min-width: 36px;
+  padding: 8px 10px;
+}
+
+.controles-cantidad .eliminar {
+  background: #dc3545;
+}
+
+.resumen {
+  font-size: 1.1rem;
+  background: #fff4fa;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #f0dae6;
+}
+
+.acciones-carrito {
+  display: grid;
+  gap: 10px;
+}
+
+.carrito button.vaciar {
+  background: linear-gradient(135deg, #dc3545, #b02a37);
+}
+
+.carrito button.finalizar {
+  background: linear-gradient(135deg, #0070ba, #003087);
+}
+
+.pago {
+  margin-top: 20px;
+  background: #fff8fc;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ecd8e7;
+}
+
+.texto-pago {
+  color: var(--texto-suave);
+  font-size: 0.93rem;
+  margin-top: 0;
+}
+
+.carrito-vacio {
+  color: #8a7b88;
+  font-style: italic;
+}
+
+.beneficios-section,
+.recomendados-section,
+.ranking-elo,
+.duelo-section {
+  margin-top: 30px;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: var(--sombra);
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--borde);
+}
+
+.seccion-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.seccion-titulo h2,
+.duelo-section h2 {
+  margin: 0;
+  color: var(--principal-oscuro);
+}
+
+.texto-seccion {
+  color: var(--texto-suave);
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+.reset-elo {
+  background: linear-gradient(135deg, #7b6f87, #5d5168);
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.beneficio-card {
+  background: #fff8fc;
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+}
+
+.icono-beneficio {
+  font-size: 2rem;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.beneficio-card h3 {
+  margin: 0 0 10px;
+  color: var(--texto);
+  font-size: 1rem;
+}
+
+.beneficio-card p {
+  margin: 0;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.recomendados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.recomendado-card {
+  background: #fff8fc;
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(166, 61, 124, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.recomendado-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(166, 61, 124, 0.16);
+}
+
+.recomendado-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.recomendado-info {
+  padding: 14px;
+}
+
+.recomendado-info h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.recomendado-info p {
+  margin: 0 0 10px;
+  color: var(--texto-suave);
+}
+
+.recomendado-info .precio-recomendado {
+  color: var(--principal-oscuro);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.carrusel-top {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.carrusel-top::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carrusel-top::-webkit-scrollbar-thumb {
+  background: #d0a4bf;
+  border-radius: 20px;
+}
+
+.top-card {
+  min-width: 190px;
+  max-width: 190px;
+  background: #fff8fc;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--borde);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.top-card:hover {
+  transform: scale(1.03);
+}
+
+.top-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+}
+
+.top-card-info {
+  padding: 12px;
+  text-align: left;
+}
+
+.top-card-info h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.badge-ranking {
+  display: inline-block;
+  background: var(--acento);
+  color: #533900;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.elo-score {
+  color: var(--principal-oscuro);
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.duelo-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 340px));
+  justify-content: center;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.duelo-card {
+  background: #fff8fc;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--borde);
+  text-align: center;
+  padding-bottom: 14px;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.duelo-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.duelo-card h3 {
+  margin: 12px 10px 6px;
+  font-size: 1rem;
+}
+
+.duelo-card p {
+  margin: 0 10px 10px;
+  color: var(--principal-oscuro);
+  font-weight: bold;
+  font-size: 0.92rem;
+}
+
+.duelo-card button {
+  background: linear-gradient(135deg, #ff7b54, #ff477e);
+  width: calc(100% - 24px);
+  padding: 9px 12px;
+  font-size: 0.95rem;
+}
+
+.footer {
+  margin-top: 34px;
+  background: linear-gradient(135deg, #5c2347, #7e2d5f);
+  color: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18px;
+  box-shadow: var(--sombra);
+}
+
+.footer h3 {
+  margin-top: 0;
+}
+
+.footer p {
+  margin: 6px 0;
+  color: #f6dce9;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .carrito {
+    position: static;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .duelo-container {
+    grid-template-columns: 1fr;
+  }
+
+  .duelo-card {
+    max-width: 300px;
+  }
+
+  .duelo-card img {
+    height: 150px;
+  }
+
+  .hero-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .duelo-card {
+    max-width: 100%;
+  }
+
+  .duelo-card img {
+    height: 140px;
+  }
+
+  .producto img,
+  .recomendado-card img,
+  .top-card img {
+    height: 180px;
+  }
+
+  .hero {
+    padding: 20px;
+  }
+}
