@@ -4,241 +4,216 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Villa Fiesta | Eventos inolvidables</title>
-  <meta
-    name="description"
-    content="Villa Fiesta - El lugar perfecto para bodas, cumpleaños y eventos corporativos."
-  />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="header" id="inicio">
-    <div class="container nav-container">
+    <div class="topbar">
       <a href="#inicio" class="logo">Villa Fiesta</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
         <span></span>
         <span></span>
         <span></span>
       </button>
 
-      <nav class="nav" id="navMenu">
+      <nav class="nav" id="nav">
         <a href="#inicio">Inicio</a>
         <a href="#eventos">Eventos</a>
         <a href="#galeria">Galería</a>
         <a href="#servicios">Servicios</a>
         <a href="#contacto">Contacto</a>
+        <a href="#contacto" class="btn btn-nav">Reserva Ahora</a>
       </nav>
-
-      <a href="#contacto" class="btn btn-gold desktop-btn">Reserva Ahora</a>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="hero-overlay"></div>
-
-    <div class="hero-slider">
-      <div class="hero-slide active" style="background-image: url('img/hero-1.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('img/hero-2.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('img/hero-3.jpg');"></div>
     </div>
 
-    <div class="container hero-content">
-      <h1>El Lugar <span>Perfecto</span><br />para tus <em>Eventos</em></h1>
-      <p>
-        Creamos experiencias elegantes e inolvidables para bodas, cumpleaños y
-        celebraciones corporativas.
-      </p>
-      <a href="#eventos" class="btn btn-primary">Conoce Más</a>
+    <section class="hero">
+      <div class="hero-overlay"></div>
 
-      <div class="hero-dots" id="heroDots">
-        <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
-        <button class="dot" data-slide="1" aria-label="Slide 2"></button>
-        <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+      <div class="hero-slider">
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1600&q=80');"></div>
       </div>
-    </div>
-  </section>
 
-  <main>
-    <section class="section events-section" id="eventos">
-      <div class="container">
-        <div class="triple-heading">
-          <div class="heading-item">
-            <span class="line"></span>
-            <h2>Bodas</h2>
-            <span class="line"></span>
-          </div>
-          <div class="heading-item">
-            <span class="line"></span>
-            <h2>Cumpleaños</h2>
-            <span class="line"></span>
-          </div>
-          <div class="heading-item">
-            <span class="line"></span>
-            <h2>Eventos Corporativos</h2>
-            <span class="line"></span>
-          </div>
+      <div class="hero-content container">
+        <p class="hero-kicker">Espacios elegantes para momentos memorables</p>
+        <h1>El Lugar Perfecto <span>para tus Eventos</span></h1>
+        <p class="hero-text">
+          Creamos experiencias únicas para bodas, cumpleaños, reuniones corporativas
+          y celebraciones especiales con un ambiente cálido, exclusivo y sofisticado.
+        </p>
+        <div class="hero-actions">
+          <a href="#eventos" class="btn btn-primary">Conoce Más</a>
+          <a href="#contacto" class="btn btn-secondary">Cotiza tu evento</a>
         </div>
 
-        <div class="cards-grid">
+        <div class="hero-dots" id="hero-dots">
+          <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
+          <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+          <button class="dot" data-slide="2" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="eventos section section-light" id="eventos">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Eventos Especiales</h2>
+          <p>Diseñamos celebraciones con estilo, detalle y atención personalizada.</p>
+        </div>
+
+        <div class="event-grid">
           <article class="event-card">
-            <img src="img/boda.jpg" alt="Evento de boda" />
-            <div class="card-footer">
-              <a href="#contacto" class="btn btn-primary small">Ver Más</a>
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Bodas elegantes" />
+            <div class="event-card-body">
+              <h3>Bodas</h3>
+              <p>Ambientes románticos, decoración premium y una experiencia inolvidable.</p>
+              <a href="#contacto" class="btn btn-card">Ver Más</a>
             </div>
           </article>
 
           <article class="event-card">
-            <img src="img/cumpleanos.jpg" alt="Evento de cumpleaños" />
-            <div class="card-footer">
-              <a href="#contacto" class="btn btn-primary small">Ver Más</a>
+            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80" alt="Cumpleaños" />
+            <div class="event-card-body">
+              <h3>Cumpleaños</h3>
+              <p>Celebra fechas especiales con montajes únicos y servicio completo.</p>
+              <a href="#contacto" class="btn btn-card">Ver Más</a>
             </div>
           </article>
 
           <article class="event-card">
-            <img src="img/corporativo.jpg" alt="Evento corporativo" />
-            <div class="card-footer">
-              <a href="#contacto" class="btn btn-primary small">Ver Más</a>
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80" alt="Eventos corporativos" />
+            <div class="event-card-body">
+              <h3>Eventos Corporativos</h3>
+              <p>Espacios ideales para reuniones, lanzamientos, cenas y networking.</p>
+              <a href="#contacto" class="btn btn-card">Ver Más</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section about-section">
-      <div class="container about-wrapper">
+    <section class="about section" id="nosotros">
+      <div class="container about-grid">
         <div class="about-image">
-          <img src="img/about.jpg" alt="Salón de eventos elegante" />
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Salón de eventos elegante" />
         </div>
 
         <div class="about-content">
-          <div class="section-title left">
-            <span class="line"></span>
+          <div class="section-heading left">
             <h2>Sobre Nosotros</h2>
           </div>
-
           <p>
-            Somos un espacio exclusivo diseñado para celebrar momentos
-            inolvidables. En Villa Fiesta combinamos elegancia, calidez y una
-            atención personalizada para que cada evento sea único.
+            Somos un espacio exclusivo pensado para transformar celebraciones en recuerdos
+            inolvidables. Nuestro equipo combina elegancia, organización y atención al detalle
+            para que cada evento refleje lo que imaginas.
           </p>
-
           <p>
-            Nuestro equipo se encarga de cada detalle: decoración, ambientación,
-            coordinación, banquetería y asistencia integral para que tú solo te
-            preocupes de disfrutar.
+            Desde bodas íntimas hasta encuentros empresariales, ofrecemos escenarios cálidos,
+            decoración sofisticada y soluciones integrales para cada ocasión.
           </p>
-
           <a href="#contacto" class="btn btn-primary">Leer Más</a>
         </div>
       </div>
     </section>
 
-    <section class="section services-section" id="servicios">
+    <section class="services section section-light" id="servicios">
       <div class="container">
-        <div class="section-title center">
-          <span class="line"></span>
+        <div class="section-heading">
           <h2>Nuestros Servicios</h2>
-          <span class="line"></span>
+          <p>Todo lo que necesitas para que tu evento salga perfecto.</p>
         </div>
 
         <div class="services-grid">
           <article class="service-item">
-            <div class="service-icon">🍽</div>
+            <div class="service-icon">🍽️</div>
             <h3>Banquetes Exquisitos</h3>
+            <p>Menús personalizados con presentación elegante y sabores memorables.</p>
           </article>
 
           <article class="service-item">
             <div class="service-icon">✨</div>
             <h3>Decoración & Ambientación</h3>
+            <p>Diseño visual armónico con flores, iluminación y detalles de lujo.</p>
           </article>
 
           <article class="service-item">
             <div class="service-icon">🎵</div>
             <h3>Música & DJ</h3>
+            <p>Sonido profesional, playlists a medida y ambiente perfecto para celebrar.</p>
           </article>
 
           <article class="service-item">
-            <div class="service-icon">🛎</div>
+            <div class="service-icon">🗓️</div>
             <h3>Coordinación de Eventos</h3>
+            <p>Organización integral para que disfrutes sin preocuparte por la logística.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section gallery-section" id="galeria">
+    <section class="gallery section" id="galeria">
       <div class="container">
         <div class="gallery-header">
-          <div class="section-title center no-margin">
-            <span class="line"></span>
+          <div class="section-heading left">
             <h2>Galería de Eventos</h2>
-            <span class="line"></span>
+            <p>Algunos momentos y montajes que hacen parte de nuestra esencia.</p>
           </div>
-
-          <a href="#contacto" class="btn btn-primary small">Ver Galería Completa</a>
+          <a href="#contacto" class="btn btn-secondary">Ver Galería Completa</a>
         </div>
 
         <div class="gallery-grid">
-          <img src="img/galeria-1.jpg" alt="Mesa decorada para evento" />
-          <img src="img/galeria-2.jpg" alt="Decoración floral elegante" />
-          <img src="img/galeria-3.jpg" alt="Evento corporativo en salón" />
-          <img src="img/galeria-4.jpg" alt="Evento al aire libre" />
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contacto">
-      <div class="contact-overlay"></div>
-      <div class="container contact-wrapper">
-        <div class="contact-info">
-          <div class="section-title left light">
-            <h2>Contáctanos</h2>
-            <span class="line"></span>
-          </div>
-
-          <p class="contact-text">Reserva tu fecha con nosotros</p>
-
-          <ul>
-            <li>📞 +56 9 1234 5678</li>
-            <li>✉ info@villafiesta.cl</li>
-            <li>📍 Camino Las Flores 123, Santiago</li>
-          </ul>
-
-          <div class="socials">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">◎</a>
-            <a href="#" aria-label="Twitter">x</a>
-          </div>
-        </div>
-
-        <div class="contact-form-box">
-          <div class="section-title left light">
-            <h2>Envíanos un Mensaje</h2>
-            <span class="line"></span>
-          </div>
-
-          <form id="contactForm" class="contact-form">
-            <div class="form-row">
-              <input type="text" id="nombre" name="nombre" placeholder="Nombre" />
-              <input type="email" id="email" name="email" placeholder="Email" />
-            </div>
-
-            <input type="text" id="telefono" name="telefono" placeholder="Teléfono" />
-            <textarea id="mensaje" name="mensaje" placeholder="Mensaje"></textarea>
-
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
-
-            <p id="formMessage" class="form-message"></p>
-          </form>
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80" alt="Decoración evento 1" />
+          <img src="https://images.unsplash.com/photo-1511795409834-432f31197d73?auto=format&fit=crop&w=900&q=80" alt="Decoración evento 2" />
+          <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=80" alt="Decoración evento 3" />
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Decoración evento 4" />
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>© 2022 Villa Fiesta. Todos los derechos reservados.</p>
+  <footer class="footer" id="contacto">
+    <div class="container footer-grid">
+      <div class="contact-info">
+        <h2>Contáctanos</h2>
+        <p>Reserva tu fecha y hagamos realidad un evento inolvidable.</p>
+
+        <ul>
+          <li><strong>Teléfono:</strong> +57 300 123 4567</li>
+          <li><strong>Email:</strong> info@villafiesta.com</li>
+          <li><strong>Ubicación:</strong> Medellín, Colombia</li>
+          <li><strong>Horario:</strong> Lunes a sábado · 9:00 a.m. - 6:00 p.m.</li>
+        </ul>
+
+        <div class="socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="Twitter">x</a>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <h2>Envíanos un Mensaje</h2>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <input type="text" placeholder="Nombre" required />
+            <input type="email" placeholder="Email" required />
+          </div>
+          <input type="tel" placeholder="Teléfono" required />
+          <textarea rows="5" placeholder="Cuéntanos qué tipo de evento deseas" required></textarea>
+          <button type="submit" class="btn btn-primary btn-submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Villa Fiesta. Todos los derechos reservados.</p>
     </div>
   </footer>
 
