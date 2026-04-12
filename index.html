@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Casa de Eventos Golden Dream</title>
+  <title>Casa de Eventos Golden Dream G y T</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,63 +11,45 @@
   <div class="floating-actions">
     <a
       class="floating-btn whatsapp"
-      href="https://wa.me/573001234567?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20Casa%20de%20Eventos%20Golden%20Dream"
+      href="https://wa.me/573172930703?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20Casa%20de%20Eventos%20Golden%20Dream%20G%20y%20T"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp"
     >
-      <span>💬</span>
-      <span>WhatsApp</span>
+      <span class="floating-icon">💬</span>
+      <span class="floating-text">WhatsApp</span>
     </a>
 
-    <button class="floating-btn paypal" onclick="irAPago()" aria-label="Ir a PayPal">
-      <span>💳</span>
-      <span>PayPal</span>
+    <button class="floating-btn paypal" onclick="irAPago()" aria-label="Ir al pago">
+      <span class="floating-icon">💳</span>
+      <span class="floating-text">Pago</span>
     </button>
 
     <button class="floating-btn pagos" onclick="irAMediosPago()" aria-label="Ver medios de pago">
-      <span>💰</span>
-      <span>Medios de pago</span>
+      <span class="floating-icon">✨</span>
+      <span class="floating-text">Medios</span>
     </button>
   </div>
 
   <div class="contenedor-principal">
     <header class="hero">
-      <div class="hero-overlay"></div>
-
-      <div class="hero-carousel">
-        <div class="slide active">
-          <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=80" alt="Salón de eventos elegante">
-        </div>
-        <div class="slide">
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1600&q=80" alt="Decoración para celebración especial">
-        </div>
-        <div class="slide">
-          <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1600&q=80" alt="Evento social premium">
-        </div>
-
-        <button class="carousel-btn prev" onclick="moverCarrusel(-1)" aria-label="Imagen anterior">❮</button>
-        <button class="carousel-btn next" onclick="moverCarrusel(1)" aria-label="Imagen siguiente">❯</button>
-
-        <div class="carousel-dots">
-          <button class="dot active" onclick="irASlide(0)" aria-label="Ir a imagen 1"></button>
-          <button class="dot" onclick="irASlide(1)" aria-label="Ir a imagen 2"></button>
-          <button class="dot" onclick="irASlide(2)" aria-label="Ir a imagen 3"></button>
-        </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=80" alt="Salón elegante para eventos">
       </div>
 
       <div class="hero-content">
-        <div class="hero-badge">Eventos elegantes en Bogotá</div>
-        <h1>Casa de Eventos Golden Dream</h1>
+        <div class="hero-badge">Eventos con elegancia y atención personalizada</div>
+        <h1>Casa de Eventos Golden Dream G y T</h1>
         <p>
-          Creamos experiencias memorables para bodas, cumpleaños, eventos empresariales
-          y celebraciones especiales con atención premium, espacios elegantes y pago seguro.
+          Un espacio pensado para celebraciones especiales, reuniones familiares,
+          eventos empresariales y momentos inolvidables con una presentación seria,
+          cálida y profesional.
         </p>
 
         <div class="hero-info">
-          <span>📍 Cobertura: Bogotá y alrededores</span>
-          <span>🎉 Reservas para eventos sociales y corporativos</span>
-          <span>💳 PayPal, transferencia, Nequi y Daviplata</span>
+          <span>📍 Bogotá y alrededores</span>
+          <span>📲 317 2930703</span>
+          <span>📧 goldendreamgyt@gmail.com</span>
         </div>
 
         <div class="filtros">
@@ -87,9 +69,9 @@
       <section id="productos" class="productos"></section>
 
       <aside class="carrito" id="panel-pago">
-        <h2>🛒 Reserva tu evento</h2>
+        <h2>Reserva tu servicio</h2>
         <p class="contador-carrito">
-          Servicios en carrito: <span id="cantidad-carrito">0</span>
+          Servicios seleccionados: <span id="cantidad-carrito">0</span>
         </p>
 
         <ul id="lista-carrito"></ul>
@@ -99,20 +81,20 @@
         </div>
 
         <div class="acciones-carrito">
-          <button class="vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
-          <button class="finalizar" onclick="finalizarCompra()">Pagar con PayPal</button>
+          <button class="vaciar" onclick="vaciarCarrito()">Vaciar selección</button>
+          <button class="finalizar" onclick="finalizarCompra()">Continuar al pago</button>
         </div>
 
         <div class="pago" id="medios-pago">
-          <h3>💳 Medios de pago</h3>
+          <h3>Medios de pago</h3>
           <p class="texto-pago">
-            Tu reserva se confirma únicamente cuando el pago es aprobado. También puedes
-            solicitar apoyo por WhatsApp para pagos complementarios o resolver dudas.
+            Puedes realizar tu reserva por PayPal y también solicitar información por WhatsApp
+            para confirmar disponibilidad, condiciones del evento y detalles adicionales.
           </p>
 
           <div class="medios-pago-lista">
             <span class="medio-tag">PayPal</span>
-            <span class="medio-tag">Transferencia bancaria</span>
+            <span class="medio-tag">Transferencia</span>
             <span class="medio-tag">Nequi</span>
             <span class="medio-tag">Daviplata</span>
           </div>
@@ -124,42 +106,42 @@
 
     <section class="beneficios-section">
       <div class="seccion-titulo">
-        <h2>¿Por qué comprar aquí?</h2>
+        <h2>¿Por qué elegirnos?</h2>
       </div>
 
       <div class="beneficios-grid">
         <article class="beneficio-card">
           <span class="icono-beneficio">✨</span>
-          <h3>Ambiente elegante</h3>
-          <p>Espacios diseñados para celebraciones con una presentación cuidada y profesional.</p>
+          <h3>Presentación elegante</h3>
+          <p>Espacios organizados con una imagen estética y sobria para distintas celebraciones.</p>
         </article>
 
         <article class="beneficio-card">
           <span class="icono-beneficio">🎀</span>
-          <h3>Decoración personalizada</h3>
-          <p>Adaptamos estilos, colores y detalles para que tu evento tenga identidad propia.</p>
+          <h3>Decoración adaptable</h3>
+          <p>Nos ajustamos al estilo de tu evento para ofrecer una ambientación armoniosa.</p>
         </article>
 
         <article class="beneficio-card">
           <span class="icono-beneficio">🤝</span>
           <h3>Atención cercana</h3>
-          <p>Te acompañamos durante el proceso de reserva para brindarte confianza y claridad.</p>
+          <p>Brindamos acompañamiento durante el proceso de reserva y organización del servicio.</p>
         </article>
 
         <article class="beneficio-card">
           <span class="icono-beneficio">🔒</span>
-          <h3>Pago seguro</h3>
-          <p>Integramos PayPal y otros medios para facilitar compras seguras y organizadas.</p>
+          <h3>Pago confiable</h3>
+          <p>Contamos con medios de pago seguros para facilitar tu proceso de reserva.</p>
         </article>
       </div>
     </section>
 
     <section class="recomendados-section">
       <div class="seccion-titulo">
-        <h2 id="titulo-recomendados">Recomendados para ti</h2>
+        <h2 id="titulo-recomendados">Servicios recomendados</h2>
       </div>
       <p class="texto-seccion">
-        Descubre paquetes sugeridos según la categoría que más te interesa y el ranking de la tienda.
+        Te mostramos opciones destacadas según la categoría que más consultes dentro de la tienda.
       </p>
       <div id="recomendados" class="recomendados-grid"></div>
     </section>
@@ -173,24 +155,26 @@
     </section>
 
     <section class="duelo-section">
-      <h2>Duelo de eventos</h2>
+      <h2>Duelo de servicios</h2>
       <p class="texto-seccion">
-        Vota cuál servicio te gusta más y ayuda a construir el ranking de los paquetes favoritos.
+        Vota por la opción que más te guste y ayuda a construir el ranking del sitio.
       </p>
       <div id="duelo-container" class="duelo-container"></div>
     </section>
 
     <footer class="footer">
       <div>
-        <h3>Casa de Eventos Golden Dream</h3>
-        <p>Elegancia, organización y momentos memorables para tus celebraciones más importantes.</p>
+        <h3>Casa de Eventos Golden Dream G y T</h3>
+        <p>
+          Un lugar pensado para celebrar con estilo, organización y una experiencia confiable
+          para tus momentos importantes.
+        </p>
       </div>
 
       <div>
-        <p>📍 Bogotá y alrededores</p>
-        <p>📲 WhatsApp: +57 300 123 4567</p>
-        <p>📷 Instagram: @goldendream.eventos</p>
-        <p>📧 Correo: contacto@goldendreameventos.com</p>
+        <p>📍 Cobertura: Bogotá y alrededores</p>
+        <p>📲 Teléfono: 317 2930703</p>
+        <p>📧 Correo: goldendreamgyt@gmail.com</p>
       </div>
     </footer>
   </div>
