@@ -1,31 +1,312 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Villa Fiesta</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <header class="topbar">
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo">Villa Fiesta</a>
 
-  <header>
-    <h1>Villa Fiesta</h1>
-    <p>El lugar perfecto para tus eventos</p>
+      <nav class="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#catalogo">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <a href="#catalogo" class="btn btn-dorado">Reserva Ahora</a>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>Catálogo</h2>
-      <div id="productos"></div>
+    <section class="hero" id="inicio">
+      <div class="hero-overlay"></div>
+      <div class="contenedor hero-contenido">
+        <p class="hero-etiqueta">Elegancia, celebración y momentos inolvidables</p>
+        <h1>El Lugar Perfecto<br>para tus Eventos</h1>
+        <p class="hero-texto">
+          Organizamos bodas, cumpleaños y eventos corporativos con estilo,
+          atención personalizada y ambientación premium.
+        </p>
+        <div class="hero-botones">
+          <a href="#catalogo" class="btn">Conoce Más</a>
+          <a href="#contacto" class="btn btn-secundario">Contáctanos</a>
+        </div>
+      </div>
     </section>
 
-    <aside>
-      <h2>Carrito</h2>
-      <ul id="lista-carrito"></ul>
-      <p>Total: <span id="total">$0</span></p>
-    </aside>
+    <section class="seccion seccion-clara" id="eventos">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2>Nuestros Eventos</h2>
+          <span></span>
+        </div>
+
+        <div class="eventos-grid">
+          <article class="evento-card">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80" alt="Bodas">
+            <h3>Bodas</h3>
+            <p>Montajes románticos, decoración de lujo y coordinación completa.</p>
+            <a href="#catalogo" class="btn btn-pequeno">Ver más</a>
+          </article>
+
+          <article class="evento-card">
+            <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=1000&q=80" alt="Cumpleaños">
+            <h3>Cumpleaños</h3>
+            <p>Celebraciones temáticas con música, comida y ambientación especial.</p>
+            <a href="#catalogo" class="btn btn-pequeno">Ver más</a>
+          </article>
+
+          <article class="evento-card">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1000&q=80" alt="Corporativos">
+            <h3>Corporativos</h3>
+            <p>Espacios elegantes para reuniones, lanzamientos y cenas empresariales.</p>
+            <a href="#catalogo" class="btn btn-pequeno">Ver más</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-vino sobre-nosotros">
+      <div class="contenedor sobre-grid">
+        <div class="sobre-imagen">
+          <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=80" alt="Salón de eventos">
+        </div>
+
+        <div class="sobre-texto">
+          <h2>Sobre Nosotros</h2>
+          <p>
+            En Villa Fiesta creamos experiencias memorables para cada celebración.
+            Combinamos decoración elegante, excelente atención y servicios integrales
+            para que tu evento sea único de principio a fin.
+          </p>
+          <p>
+            Nuestro equipo está preparado para ayudarte a organizar una experiencia
+            impecable, ya sea una boda íntima o un gran evento corporativo.
+          </p>
+          <a href="#contacto" class="btn">Leer más</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-clara">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2>Nuestros Servicios</h2>
+          <span></span>
+        </div>
+
+        <div class="servicios-grid">
+          <article class="servicio-item">
+            <div class="servicio-icono">🍽️</div>
+            <h3>Banquetes</h3>
+            <p>Menús para eventos sociales y empresariales.</p>
+          </article>
+
+          <article class="servicio-item">
+            <div class="servicio-icono">🌸</div>
+            <h3>Decoración</h3>
+            <p>Ambientaciones elegantes y personalizadas.</p>
+          </article>
+
+          <article class="servicio-item">
+            <div class="servicio-icono">🎵</div>
+            <h3>Música & DJ</h3>
+            <p>Experiencia musical para cada ocasión.</p>
+          </article>
+
+          <article class="servicio-item">
+            <div class="servicio-icono">🗓️</div>
+            <h3>Coordinación</h3>
+            <p>Organización de principio a fin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-clara" id="catalogo">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2>Catálogo de Servicios</h2>
+          <span></span>
+        </div>
+
+        <div class="filtro-wrap">
+          <label for="categoria">Filtrar por categoría:</label>
+          <select id="categoria">
+            <option value="todos">Todos</option>
+            <option value="Bodas">Bodas</option>
+            <option value="Cumpleaños">Cumpleaños</option>
+            <option value="Corporativos">Corporativos</option>
+          </select>
+        </div>
+
+        <div class="layout-tienda">
+          <section id="productos" class="productos"></section>
+
+          <aside class="carrito">
+            <h2>Carrito de Reservas</h2>
+            <p class="contador-carrito">
+              Servicios en carrito: <span id="cantidad-carrito">0</span>
+            </p>
+
+            <ul id="lista-carrito"></ul>
+
+            <div class="resumen">
+              <p><strong>Total:</strong> <span id="total">$0</span></p>
+            </div>
+
+            <div class="acciones-carrito">
+              <button class="vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+              <button class="finalizar" onclick="finalizarCompra()">Proceder al pago</button>
+            </div>
+
+            <div class="pago">
+              <h3>Pago</h3>
+              <div id="paypal-button-container" style="display:none;"></div>
+              <p class="texto-pago">
+                También puedes reservar por WhatsApp y coordinar tu evento directamente.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-clara beneficios-section">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2>¿Por qué comprar aquí?</h2>
+          <span></span>
+        </div>
+
+        <div class="beneficios-grid">
+          <article class="beneficio-card">
+            <span class="icono-beneficio">✨</span>
+            <h3>Experiencias elegantes</h3>
+            <p>Diseñamos espacios con estilo, armonía y detalle.</p>
+          </article>
+
+          <article class="beneficio-card">
+            <span class="icono-beneficio">💳</span>
+            <h3>Pago fácil y seguro</h3>
+            <p>Reserva con confianza y visualiza el valor total en COP.</p>
+          </article>
+
+          <article class="beneficio-card">
+            <span class="icono-beneficio">🎯</span>
+            <h3>Atención personalizada</h3>
+            <p>Te ayudamos a encontrar el paquete ideal para tu evento.</p>
+          </article>
+
+          <article class="beneficio-card">
+            <span class="icono-beneficio">🏆</span>
+            <h3>Servicios destacados</h3>
+            <p>Los más valorados se muestran en el top de la tienda.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-clara recomendados-section">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2 id="titulo-recomendados">Recomendados para ti</h2>
+          <span></span>
+        </div>
+        <p class="texto-seccion">
+          Selección dinámica según la categoría que más te interesa y el ranking actual.
+        </p>
+        <div id="recomendados" class="recomendados-grid"></div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-clara ranking-elo">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2>Top de la tienda</h2>
+          <span></span>
+        </div>
+
+        <div class="acciones-top">
+          <button class="reset-elo" onclick="reiniciarElo()">Reiniciar ranking</button>
+        </div>
+
+        <div id="top-elo" class="carrusel-top"></div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-clara duelo-section">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2>Duelo de servicios</h2>
+          <span></span>
+        </div>
+        <p class="texto-seccion">
+          Vota por tu opción favorita y actualiza el ranking ELO en tiempo real.
+        </p>
+        <div id="duelo-container" class="duelo-container"></div>
+      </div>
+    </section>
+
+    <section class="seccion seccion-clara" id="galeria">
+      <div class="contenedor">
+        <div class="titulo-seccion">
+          <span></span>
+          <h2>Galería de Eventos</h2>
+          <span></span>
+        </div>
+
+        <div class="galeria-grid">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Evento 1">
+          <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=900&q=80" alt="Evento 2">
+          <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=900&q=80" alt="Evento 3">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80" alt="Evento 4">
+        </div>
+      </div>
+    </section>
   </main>
 
+  <footer class="footer" id="contacto">
+    <div class="contenedor footer-grid">
+      <div>
+        <h3>Contáctanos</h3>
+        <p>Reserva tu fecha y recibe atención personalizada para tu evento.</p>
+        <p><strong>WhatsApp:</strong> +57 300 123 4567</p>
+        <p><strong>Email:</strong> info@villafiesta.com</p>
+        <p><strong>Ciudad:</strong> Bogotá, Colombia</p>
+      </div>
+
+      <div>
+        <h3>Envíanos un mensaje</h3>
+        <form class="formulario-contacto">
+          <input type="text" placeholder="Nombre" />
+          <input type="email" placeholder="Email" />
+          <input type="text" placeholder="Teléfono" />
+          <textarea placeholder="Cuéntanos qué tipo de evento deseas"></textarea>
+          <button type="button" class="btn">Enviar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© 2025 Villa Fiesta. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=COP&components=buttons,funding-eligibility"></script>
   <script src="script.js"></script>
 </body>
 </html>
