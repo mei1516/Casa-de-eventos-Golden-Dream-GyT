@@ -1,32 +1,162 @@
-:root{
-  --vino:#4A1F2D;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villa Fiesta</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="contenedor nav">
+      <a href="#" class="logo">Villa Fiesta</a>
+      <nav class="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#galeria">Galería</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a
+        class="btn btn-nav"
+        target="_blank"
+        href="https://wa.me/573001234567?text=Hola,%20quiero%20información%20sobre%20Villa%20Fiesta"
+      >
+        Reserva Ahora
+      </a>
+    </div>
+  </header>
 
-body{
-  font-family: Arial;
-  background:#f5f0ed;
-  text-align:center;
-}
+  <section class="hero" id="inicio">
+    <div class="overlay"></div>
+    <div class="contenedor hero-contenido">
+      <p class="etiqueta">Eventos elegantes y memorables</p>
+      <h1>El lugar perfecto<br>para tus eventos</h1>
+      <p class="hero-texto">
+        Bodas, cumpleaños y eventos corporativos con ambientación elegante,
+        atención personalizada y experiencias inolvidables.
+      </p>
+      <div class="hero-botones">
+        <a href="#servicios" class="btn">Conoce Más</a>
+        <a
+          target="_blank"
+          href="https://wa.me/573001234567?text=Hola,%20quiero%20cotizar%20un%20evento"
+          class="btn btn-secundario"
+        >
+          Escríbenos
+        </a>
+      </div>
+    </div>
+  </section>
 
-#productos{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:10px;
-  margin:20px;
-}
+  <section class="seccion" id="galeria">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">Galería destacada</h2>
+      <div class="galeria-grid">
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80" alt="Boda">
+        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80" alt="Evento">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80" alt="Celebración">
+      </div>
+    </div>
+  </section>
 
-.producto{
-  background:white;
-  padding:10px;
-  border-radius:10px;
-}
+  <section class="seccion beneficios">
+    <div class="contenedor">
+      <h2 class="titulo-seccion">¿Por qué elegirnos?</h2>
+      <div class="beneficios-grid">
+        <article class="beneficio">
+          <h3>Decoración premium</h3>
+          <p>Montajes elegantes y personalizados para cada ocasión.</p>
+        </article>
+        <article class="beneficio">
+          <h3>Atención personalizada</h3>
+          <p>Te acompañamos desde la idea hasta el día del evento.</p>
+        </article>
+        <article class="beneficio">
+          <h3>Pago fácil</h3>
+          <p>Trabajamos con WhatsApp, transferencia y PayPal.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-button{
-  background:var(--vino);
-  color:white;
-  border:none;
-  padding:8px;
-  border-radius:6px;
-  cursor:pointer;
-}
- 
+  <main class="contenedor layout" id="servicios">
+    <section class="catalogo">
+      <div class="catalogo-top">
+        <div>
+          <p class="subtitulo-catalogo">Planea tu celebración</p>
+          <h2>Nuestros Servicios</h2>
+        </div>
+
+        <select id="categoria">
+          <option value="todos">Todos</option>
+          <option value="Bodas">Bodas</option>
+          <option value="Cumpleaños">Cumpleaños</option>
+          <option value="Corporativos">Corporativos</option>
+        </select>
+      </div>
+
+      <div id="productos" class="productos"></div>
+    </section>
+
+    <aside class="carrito">
+      <h2>🛒 Tu carrito</h2>
+      <p class="carrito-texto">Agrega servicios y cotiza tu evento.</p>
+
+      <ul id="lista-carrito"></ul>
+
+      <div class="resumen">
+        <p><strong>Total:</strong> <span id="total">$0</span></p>
+      </div>
+
+      <div class="acciones">
+        <button onclick="vaciarCarrito()">Vaciar carrito</button>
+
+        <a
+          id="btn-whatsapp"
+          class="btn-whatsapp"
+          target="_blank"
+          href="https://wa.me/573001234567?text=Hola,%20quiero%20información"
+        >
+          Pedir por WhatsApp
+        </a>
+      </div>
+
+      <div class="pago-box">
+        <h3>Medios de pago</h3>
+        <div class="pagos-grid">
+          <span>PayPal</span>
+          <span>Nequi</span>
+          <span>Daviplata</span>
+          <span>Transferencia</span>
+        </div>
+      </div>
+
+      <div class="pago-box">
+        <h3>Pagar con PayPal</h3>
+        <div id="paypal-button-container"></div>
+      </div>
+    </aside>
+  </main>
+
+  <section class="seccion contacto" id="contacto">
+    <div class="contenedor contacto-box">
+      <div>
+        <h2>Contáctanos</h2>
+        <p><strong>WhatsApp:</strong> +57 300 123 4567</p>
+        <p><strong>Instagram:</strong> @villafiestaeventos</p>
+        <p><strong>Ciudad:</strong> Bogotá, Colombia</p>
+      </div>
+      <a
+        class="btn"
+        target="_blank"
+        href="https://wa.me/573001234567?text=Hola,%20quiero%20cotizar%20mi%20evento"
+      >
+        Hablar ahora
+      </a>
+    </div>
+  </section>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=COP"></script>
+  <script src="script.js"></script>
+</body>
+</html>
