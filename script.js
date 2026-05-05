@@ -2,7 +2,7 @@ const productos = [
   {
     id: 1,
     nombre: "Espacio para bodas",
-    precio: 1.000.000,
+    precio: 1000000,
     categoria: "Bodas",
     img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80",
     descripcion: "Ambiente elegante y organizado para celebraciones matrimoniales con atención cuidada.",
@@ -11,7 +11,7 @@ const productos = [
   {
     id: 2,
     nombre: "Decoración para boda",
-    precio: 800.000,
+    precio: 800000,
     categoria: "Bodas",
     img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80",
     descripcion: "Propuesta visual sobria y armónica para acompañar uno de los días más importantes.",
@@ -20,7 +20,7 @@ const productos = [
   {
     id: 3,
     nombre: "Celebración de cumpleaños",
-    precio: 600.000,
+    precio: 600000,
     categoria: "Cumpleaños",
     img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80",
     descripcion: "Espacio preparado para reuniones familiares y celebraciones especiales con buena ambientación.",
@@ -29,7 +29,7 @@ const productos = [
   {
     id: 4,
     nombre: "Decoración de cumpleaños",
-    precio: 400.000,
+    precio: 400000,
     categoria: "Cumpleaños",
     img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80",
     descripcion: "Montaje decorativo adaptable al estilo de tu celebración y al tipo de encuentro.",
@@ -38,7 +38,7 @@ const productos = [
   {
     id: 5,
     nombre: "Evento empresarial",
-    precio: 1.500.000,
+    precio: 1500000,
     categoria: "Empresariales",
     img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
     descripcion: "Espacio apto para reuniones corporativas, presentaciones y encuentros profesionales.",
@@ -47,7 +47,7 @@ const productos = [
   {
     id: 6,
     nombre: "Ambientación corporativa",
-    precio: 900.000,
+    precio: 900000,
     categoria: "Empresariales",
     img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80",
     descripcion: "Presentación organizada y formal para fortalecer la imagen de tus eventos empresariales.",
@@ -56,7 +56,7 @@ const productos = [
   {
     id: 7,
     nombre: "Decoración temática",
-    precio: 1.000.000,
+    precio: 1000000,
     categoria: "Decoración",
     img: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=900&q=80",
     descripcion: "Diseño decorativo personalizado para transformar el espacio según tu ocasión.",
@@ -65,7 +65,7 @@ const productos = [
   {
     id: 8,
     nombre: "Mesa principal y ambientación",
-    precio: 700.000,
+    precio: 700000,
     categoria: "Decoración",
     img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80",
     descripcion: "Composición visual elegante para destacar el centro del evento de forma estética.",
@@ -161,6 +161,7 @@ function renderProductos(lista = productos) {
       <p class="texto-reserva">Desde ${formatearPrecio(prod.precio)}</p>
       <button onclick="agregarAlCarrito(${prod.id})">Agregar a cotización</button>
     `;
+
     contenedorProductos.appendChild(div);
   });
 }
@@ -210,6 +211,7 @@ function renderRecomendados() {
   seleccionados.forEach(producto => {
     const card = document.createElement("article");
     card.className = "recomendado-card";
+
     card.innerHTML = `
       <img src="${producto.img}" alt="${producto.nombre}" onerror="this.src='https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80'">
       <div class="recomendado-info">
@@ -219,6 +221,7 @@ function renderRecomendados() {
         <button onclick="agregarAlCarrito(${producto.id})">Agregar a cotización</button>
       </div>
     `;
+
     recomendadosContainer.appendChild(card);
   });
 }
@@ -284,6 +287,7 @@ function actualizarCarrito() {
 
     const li = document.createElement("li");
     li.className = "item-carrito";
+
     li.innerHTML = `
       <strong>${item.nombre}</strong>
       <div class="item-detalle">
@@ -295,6 +299,7 @@ function actualizarCarrito() {
         <button class="eliminar" onclick="eliminarDelCarrito(${item.id})">Eliminar</button>
       </div>
     `;
+
     listaCarrito.appendChild(li);
   });
 
@@ -394,6 +399,7 @@ function renderTopElo() {
   ordenados.forEach((producto, index) => {
     const card = document.createElement("div");
     card.className = "top-card";
+
     card.innerHTML = `
       <img src="${producto.img}" alt="${producto.nombre}" onerror="this.src='https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80'">
       <div class="top-card-info">
@@ -403,6 +409,7 @@ function renderTopElo() {
         <p class="elo-score">Puntaje: ${ratings[producto.id]}</p>
       </div>
     `;
+
     topElo.appendChild(card);
   });
 }
