@@ -819,6 +819,9 @@ select {
   background: linear-gradient(135deg, #111, #444);
 }
 
+.whatsapp-red {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
 
 /* FOOTER */
 .footer {
