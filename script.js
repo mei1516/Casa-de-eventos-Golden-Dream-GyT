@@ -1,504 +1,92 @@
 const productos = [
   {
     id: 1,
-    nombre: "Espacio para bodas",
-    precio: 850000,
-    categoria: "Bodas",
-    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Ambiente elegante y organizado para celebraciones matrimoniales con atención cuidada."
+    nombre: "Evento empresarial",
+    precio: 900000,
+    categoria: "Empresariales",
+    incluye: "Ambientación, sonido básico, logística"
   },
   {
     id: 2,
-    nombre: "Decoración para boda",
-    precio: 620000,
+    nombre: "Boda",
+    precio: 1200000,
     categoria: "Bodas",
-    img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Propuesta visual sobria y armónica para acompañar uno de los días más importantes."
+    incluye: "Decoración, mobiliario, montaje"
   },
   {
     id: 3,
-    nombre: "Celebración de cumpleaños",
-    precio: 420000,
+    nombre: "Cumpleaños",
+    precio: 400000,
     categoria: "Cumpleaños",
-    img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Espacio preparado para reuniones familiares y celebraciones especiales con buena ambientación."
-  },
-  {
-    id: 4,
-    nombre: "Decoración de cumpleaños",
-    precio: 360000,
-    categoria: "Cumpleaños",
-    img: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Montaje decorativo adaptable al estilo de tu celebración y al tipo de encuentro."
-  },
-  {
-    id: 5,
-    nombre: "Evento empresarial",
-    precio: 950000,
-    categoria: "Empresariales",
-    img: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Espacio apto para reuniones corporativas, presentaciones y encuentros profesionales."
-  },
-  {
-    id: 6,
-    nombre: "Ambientación corporativa",
-    precio: 540000,
-    categoria: "Empresariales",
-    img: "https://images.unsplash.com/photo-1511795409834-432f7b1d82b4?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Presentación organizada y formal para fortalecer la imagen de tus eventos empresariales."
-  },
-  {
-    id: 7,
-    nombre: "Decoración temática",
-    precio: 380000,
-    categoria: "Decoración",
-    img: "https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Diseño decorativo personalizado para transformar el espacio según tu ocasión."
-  },
-  {
-    id: 8,
-    nombre: "Mesa principal y ambientación",
-    precio: 290000,
-    categoria: "Decoración",
-    img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80",
-    descripcion: "Composición visual elegante para destacar el centro del evento de forma estética."
+    incluye: "Decoración temática, mesa principal"
   }
 ];
 
-let carrito = new Map();
-let ultimaCategoriaInteres = localStorage.getItem("ultimaCategoriaInteres") || "todos";
+let carrito = [];
 
-const contenedorProductos = document.getElementById("productos");
-const listaCarrito = document.getElementById("lista-carrito");
-const totalCarrito = document.getElementById("total");
-const cantidadCarrito = document.getElementById("cantidad-carrito");
-const contenedorPayPal = document.getElementById("paypal-button-container");
-const selectorCategoria = document.getElementById("categoria");
-const topElo = document.getElementById("top-elo");
-const dueloContainer = document.getElementById("duelo-container");
-const recomendadosContainer = document.getElementById("recomendados");
-const tituloRecomendados = document.getElementById("titulo-recomendados");
+const contenedor = document.getElementById("productos");
+const lista = document.getElementById("lista-carrito");
+const total = document.getElementById("total");
 
-let ratings = cargarRatings();
+function render() {
+  contenedor.innerHTML = "";
 
-/* =========================
-   FORMATO MONEDA COLOMBIA
-========================= */
-function formatearPrecio(valor) {
-  return new Intl.NumberFormat("es-CO", {
-    style: "currency",
-    currency: "COP",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(valor);
-}
-
-/* =========================
-   UTILIDADES
-========================= */
-function obtenerProductoPorId(id) {
-  return productos.find(p => p.id === id);
-}
-
-function totalDelCarrito() {
-  return Array.from(carrito.values()).reduce((acc, item) => {
-    return acc + (Number(item.precio) * Number(item.cantidad));
-  }, 0);
-}
-
-function guardarCategoriaInteres(categoria) {
-  ultimaCategoriaInteres = categoria;
-  localStorage.setItem("ultimaCategoriaInteres", categoria);
-}
-
-function obtenerCategoriaPreferida() {
-  if (selectorCategoria && selectorCategoria.value !== "todos") {
-    return selectorCategoria.value;
-  }
-
-  if (ultimaCategoriaInteres !== "todos") {
-    return ultimaCategoriaInteres;
-  }
-
-  return null;
-}
-
-function irAPago() {
-  const panelPago = document.getElementById("panel-pago");
-  if (panelPago) {
-    panelPago.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-}
-
-function irAMediosPago() {
-  const mediosPago = document.getElementById("medios-pago");
-  if (mediosPago) {
-    mediosPago.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-}
-
-/* =========================
-   RENDER PRODUCTOS
-========================= */
-function renderProductos(lista = productos) {
-  contenedorProductos.innerHTML = "";
-
-  lista.forEach(prod => {
-    const div = document.createElement("article");
-    div.className = "producto";
-    div.innerHTML = `
-      <img src="${prod.img}" alt="${prod.nombre}">
-      <span class="categoria-chip">${prod.categoria}</span>
-      <h3>${prod.nombre}</h3>
-      <p class="descripcion-producto">${prod.descripcion}</p>
-      <p class="texto-reserva">Reserva disponible</p>
-      <button onclick="agregarAlCarrito(${prod.id})">Agregar a reserva</button>
-    `;
-    contenedorProductos.appendChild(div);
-  });
-}
-
-function filtrarPorCategoria() {
-  const seleccion = selectorCategoria.value;
-
-  if (seleccion !== "todos") {
-    guardarCategoriaInteres(seleccion);
-  }
-
-  const productosFiltrados =
-    seleccion === "todos"
-      ? productos
-      : productos.filter(p => p.categoria === seleccion);
-
-  renderProductos(productosFiltrados);
-  renderRecomendados();
-}
-
-/* =========================
-   RECOMENDADOS
-========================= */
-function renderRecomendados() {
-  if (!recomendadosContainer || !tituloRecomendados) return;
-
-  const categoriaPreferida = obtenerCategoriaPreferida();
-  let candidatos = categoriaPreferida
-    ? productos.filter(p => p.categoria === categoriaPreferida)
-    : [...productos];
-
-  candidatos.sort((a, b) => ratings[b.id] - ratings[a.id]);
-
-  if (candidatos.length < 4) {
-    const complementarios = productos
-      .filter(p => !candidatos.some(c => c.id === p.id))
-      .sort((a, b) => ratings[b.id] - ratings[a.id]);
-
-    candidatos = [...candidatos, ...complementarios];
-  }
-
-  const seleccionados = candidatos.slice(0, 4);
-
-  tituloRecomendados.textContent = categoriaPreferida
-    ? `Servicios recomendados en ${categoriaPreferida}`
-    : "Servicios recomendados";
-
-  recomendadosContainer.innerHTML = "";
-
-  seleccionados.forEach(producto => {
-    const card = document.createElement("article");
-    card.className = "recomendado-card";
-    card.innerHTML = `
-      <img src="${producto.img}" alt="${producto.nombre}">
-      <div class="recomendado-info">
-        <h3>${producto.nombre}</h3>
-        <p>${producto.categoria}</p>
-        <p class="precio-recomendado">Reserva disponible</p>
-        <button onclick="agregarAlCarrito(${producto.id})">Agregar a reserva</button>
+  productos.forEach(p => {
+    contenedor.innerHTML += `
+      <div class="producto">
+        <h3>${p.nombre}</h3>
+        <p>${p.incluye}</p>
+        <p><strong>Desde $${p.precio.toLocaleString()}</strong></p>
+        <button onclick="agregar(${p.id})">Agregar</button>
       </div>
     `;
-    recomendadosContainer.appendChild(card);
   });
 }
 
-/* =========================
-   CARRITO
-========================= */
-function agregarAlCarrito(id) {
-  const producto = obtenerProductoPorId(id);
-  if (!producto) return;
-
-  guardarCategoriaInteres(producto.categoria);
-
-  if (carrito.has(id)) {
-    carrito.get(id).cantidad += 1;
-  } else {
-    carrito.set(id, { ...producto, cantidad: 1 });
-  }
-
-  guardarCarrito();
-  actualizarCarrito();
-  renderRecomendados();
+function agregar(id) {
+  const prod = productos.find(p => p.id === id);
+  carrito.push(prod);
+  actualizar();
 }
 
-function cambiarCantidad(id, cambio) {
-  if (!carrito.has(id)) return;
+function actualizar() {
+  lista.innerHTML = "";
 
-  const item = carrito.get(id);
-  item.cantidad += cambio;
+  let suma = 0;
 
-  if (item.cantidad <= 0) {
-    carrito.delete(id);
-  } else {
-    carrito.set(id, item);
-  }
+  carrito.forEach(p => {
+    suma += p.precio;
 
-  guardarCarrito();
-  actualizarCarrito();
+    lista.innerHTML += `
+      <li>${p.nombre} - $${p.precio.toLocaleString()}</li>
+    `;
+  });
+
+  total.textContent = "$" + suma.toLocaleString();
 }
 
-function eliminarDelCarrito(id) {
-  if (!carrito.has(id)) return;
-
-  carrito.delete(id);
-  guardarCarrito();
-  actualizarCarrito();
-}
-
-function actualizarCarrito() {
-  listaCarrito.innerHTML = "";
-
-  if (carrito.size === 0) {
-    listaCarrito.innerHTML = `<li class="carrito-vacio">No has seleccionado servicios todavía.</li>`;
-    totalCarrito.textContent = formatearPrecio(0);
-    cantidadCarrito.textContent = "0";
-    contenedorPayPal.style.display = "none";
+function enviarWhatsApp() {
+  if (carrito.length === 0) {
+    alert("Agrega servicios");
     return;
   }
 
-  let total = 0;
-  let cantidadTotal = 0;
+  let mensaje = "Hola quiero cotizar:\n";
 
-  carrito.forEach(item => {
-    const subtotal = Number(item.precio) * Number(item.cantidad);
-    total += subtotal;
-    cantidadTotal += Number(item.cantidad);
-
-    const li = document.createElement("li");
-    li.className = "item-carrito";
-    li.innerHTML = `
-      <strong>${item.nombre}</strong>
-      <div class="item-detalle">
-        Selección x ${item.cantidad} = ${formatearPrecio(subtotal)}
-      </div>
-      <div class="controles-cantidad">
-        <button onclick="cambiarCantidad(${item.id}, -1)">−</button>
-        <button onclick="cambiarCantidad(${item.id}, 1)">+</button>
-        <button class="eliminar" onclick="eliminarDelCarrito(${item.id})">Eliminar</button>
-      </div>
-    `;
-    listaCarrito.appendChild(li);
+  carrito.forEach(p => {
+    mensaje += "- " + p.nombre + "\n";
   });
 
-  totalCarrito.textContent = formatearPrecio(total);
-  cantidadCarrito.textContent = cantidadTotal;
-  contenedorPayPal.style.display = "block";
+  window.open(
+    "https://wa.me/573172930703?text=" +
+      encodeURIComponent(mensaje)
+  );
 }
 
-function vaciarCarrito(confirmar = true) {
-  if (carrito.size === 0) return;
-
-  if (!confirmar || confirm("¿Seguro que quieres vaciar la selección?")) {
-    carrito.clear();
-    guardarCarrito();
-    actualizarCarrito();
-  }
-}
-
-function finalizarCompra() {
-  if (carrito.size === 0) {
-    alert("Tu selección está vacía. Agrega servicios antes de continuar.");
-    return;
-  }
-
-  contenedorPayPal.style.display = "block";
-  contenedorPayPal.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
+function irACotizacion() {
+  document.getElementById("panel-cotizacion").scrollIntoView({
+    behavior: "smooth"
   });
 }
 
-function guardarCarrito() {
-  localStorage.setItem("carrito", JSON.stringify(Array.from(carrito.entries())));
-}
-
-function cargarCarrito() {
-  const data = localStorage.getItem("carrito");
-
-  if (data) {
-    carrito = new Map(JSON.parse(data));
-  }
-
-  actualizarCarrito();
-}
-
-/* =========================
-   ELO
-========================= */
-function cargarRatings() {
-  const guardados = localStorage.getItem("ratings");
-
-  if (guardados) {
-    return JSON.parse(guardados);
-  }
-
-  const iniciales = {};
-  productos.forEach(p => {
-    iniciales[p.id] = 1000;
-  });
-
-  localStorage.setItem("ratings", JSON.stringify(iniciales));
-  return iniciales;
-}
-
-function guardarRatings() {
-  localStorage.setItem("ratings", JSON.stringify(ratings));
-}
-
-function actualizarElo(ganadorId, perdedorId) {
-  const K = 32;
-  const ratingGanador = ratings[ganadorId];
-  const ratingPerdedor = ratings[perdedorId];
-
-  const esperadoGanador = 1 / (1 + Math.pow(10, (ratingPerdedor - ratingGanador) / 400));
-  const esperadoPerdedor = 1 / (1 + Math.pow(10, (ratingGanador - ratingPerdedor) / 400));
-
-  ratings[ganadorId] = Math.round(ratingGanador + K * (1 - esperadoGanador));
-  ratings[perdedorId] = Math.round(ratingPerdedor + K * (0 - esperadoPerdedor));
-
-  guardarRatings();
-}
-
-function renderTopElo() {
-  if (!topElo) return;
-
-  const ordenados = [...productos].sort((a, b) => ratings[b.id] - ratings[a.id]);
-  topElo.innerHTML = "";
-
-  ordenados.forEach((producto, index) => {
-    const card = document.createElement("div");
-    card.className = "top-card";
-    card.innerHTML = `
-      <img src="${producto.img}" alt="${producto.nombre}">
-      <div class="top-card-info">
-        <span class="badge-ranking">#${index + 1}</span>
-        <h3>${producto.nombre}</h3>
-        <p>${producto.categoria}</p>
-        <p class="elo-score">ELO: ${ratings[producto.id]}</p>
-      </div>
-    `;
-    topElo.appendChild(card);
-  });
-}
-
-function generarDuelo() {
-  if (!dueloContainer || productos.length < 2) return;
-
-  let index1 = Math.floor(Math.random() * productos.length);
-  let index2;
-
-  do {
-    index2 = Math.floor(Math.random() * productos.length);
-  } while (index1 === index2);
-
-  const p1 = productos[index1];
-  const p2 = productos[index2];
-
-  dueloContainer.innerHTML = `
-    <div class="duelo-card">
-      <img src="${p1.img}" alt="${p1.nombre}">
-      <h3>${p1.nombre}</h3>
-      <p>Reserva disponible · ELO ${ratings[p1.id]}</p>
-      <button onclick="votarDuelo(${p1.id}, ${p2.id})">Elegir este</button>
-    </div>
-
-    <div class="duelo-card">
-      <img src="${p2.img}" alt="${p2.nombre}">
-      <h3>${p2.nombre}</h3>
-      <p>Reserva disponible · ELO ${ratings[p2.id]}</p>
-      <button onclick="votarDuelo(${p2.id}, ${p1.id})">Elegir este</button>
-    </div>
-  `;
-}
-
-function votarDuelo(ganadorId, perdedorId) {
-  actualizarElo(ganadorId, perdedorId);
-  renderTopElo();
-  renderRecomendados();
-  generarDuelo();
-}
-
-function reiniciarElo() {
-  const nuevos = {};
-  productos.forEach(p => {
-    nuevos[p.id] = 1000;
-  });
-
-  ratings = nuevos;
-  guardarRatings();
-  renderTopElo();
-  renderRecomendados();
-  generarDuelo();
-}
-
-/* =========================
-   PAYPAL
-========================= */
-if (window.paypal) {
-  paypal.Buttons({
-    createOrder: function (data, actions) {
-      const total = totalDelCarrito();
-
-      if (total <= 0) {
-        alert("Agrega servicios antes de pagar.");
-        return;
-      }
-
-      return actions.order.create({
-        purchase_units: [
-          {
-            amount: {
-              currency_code: "COP",
-              value: total.toFixed(0)
-            },
-            description: "Reserva de servicios - Casa de Eventos Golden Dream G y T"
-          }
-        ]
-      });
-    },
-
-    onApprove: function (data, actions) {
-      return actions.order.capture().then(function (details) {
-        const nombre = details?.payer?.name?.given_name || "cliente";
-        alert(`¡Gracias ${nombre}! Tu pago fue aprobado y tu reserva quedó registrada.`);
-        vaciarCarrito(false);
-      });
-    },
-
-    onError: function (err) {
-      console.error("Error con PayPal:", err);
-      alert("Hubo un problema con el pago. Intenta de nuevo.");
-    }
-  }).render("#paypal-button-container");
-}
-
-/* =========================
-   INICIO
-========================= */
-if (selectorCategoria) {
-  selectorCategoria.addEventListener("change", filtrarPorCategoria);
-}
-
-renderProductos();
-cargarCarrito();
-renderRecomendados();
-renderTopElo();
-generarDuelo();
+render();
