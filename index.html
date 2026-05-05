@@ -5,63 +5,231 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Casa de Eventos Golden Dream G y T</title>
   <link rel="stylesheet" href="styles.css">
+  <meta name="google-site-verification" content="123abc..." />
 </head>
 <body>
 
   <div class="floating-actions">
     <a
       class="floating-btn whatsapp"
-      href="https://wa.me/573172930703"
+      href="https://wa.me/573172930703?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20Casa%20de%20Eventos%20Golden%20Dream%20G%20y%20T"
       target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Escribir por WhatsApp"
     >
       <span class="floating-icon">💬</span>
       <span class="floating-text">WhatsApp</span>
     </a>
 
-    <button class="floating-btn pagos" onclick="irACotizacion()">
-      <span class="floating-icon">✨</span>
+    <button class="floating-btn paypal" onclick="irAPago()" aria-label="Ir a cotización">
+      <span class="floating-icon">📋</span>
       <span class="floating-text">Cotizar</span>
+    </button>
+
+    <button class="floating-btn pagos" onclick="irAMediosPago()" aria-label="Ver medios de pago">
+      <span class="floating-icon">✨</span>
+      <span class="floating-text">Medios</span>
     </button>
   </div>
 
   <div class="contenedor-principal">
-
     <header class="hero">
       <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3" />
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=80" alt="Salón elegante para eventos">
       </div>
 
       <div class="hero-content">
-        <h1>Casa de Eventos Golden Dream</h1>
-        <p>Eventos elegantes, personalizados y únicos.</p>
+        <div class="hero-badge">Eventos con elegancia y atención personalizada</div>
+        <h1>Casa de Eventos Golden Dream G y T</h1>
+        <p>
+          Un espacio pensado para celebraciones especiales, reuniones familiares,
+          eventos empresariales y momentos inolvidables con una presentación seria,
+          cálida y profesional.
+        </p>
 
-        <select id="categoria">
-          <option value="todos">Todos</option>
-          <option value="Bodas">Bodas</option>
-          <option value="Cumpleaños">Cumpleaños</option>
-          <option value="Empresariales">Empresariales</option>
-        </select>
+        <div class="hero-info">
+          <span>📍 Bogotá y alrededores</span>
+          <span>📲 317 2930703</span>
+          <span>📧 goldendreamgyt@gmail.com</span>
+        </div>
+
+        <div class="filtros">
+          <label for="categoria">Filtrar por categoría:</label>
+          <select id="categoria">
+            <option value="todos">Todos</option>
+            <option value="Bodas">Bodas</option>
+            <option value="Cumpleaños">Cumpleaños</option>
+            <option value="Empresariales">Empresariales</option>
+            <option value="Decoración">Decoración</option>
+          </select>
+        </div>
       </div>
     </header>
 
     <main class="layout">
       <section id="productos" class="productos"></section>
 
-      <aside class="carrito" id="panel-cotizacion">
+      <aside class="carrito" id="panel-pago">
         <h2>Mi cotización estimada</h2>
+        <p class="contador-carrito">
+          Servicios seleccionados: <span id="cantidad-carrito">0</span>
+        </p>
 
         <ul id="lista-carrito"></ul>
 
-        <p><strong>Total estimado:</strong> <span id="total">$0</span></p>
+        <div class="resumen">
+          <p><strong>Total estimado desde:</strong> <span id="total">$0</span></p>
+        </div>
 
-        <p class="nota">
-          *Valores aproximados sujetos a cambios según invitados, lugar y fecha.
+        <p class="nota-cotizacion">
+          *El valor es aproximado y puede variar según fecha, lugar, número de invitados,
+          montaje, decoración, transporte y requerimientos adicionales.
         </p>
 
-        <button onclick="enviarWhatsApp()">Solicitar cotización</button>
+        <div class="acciones-carrito">
+          <button class="vaciar" onclick="vaciarCarrito()">Vaciar selección</button>
+          <button class="finalizar" onclick="finalizarCompra()">Solicitar cotización por WhatsApp</button>
+        </div>
+
+        <div class="pago" id="medios-pago">
+          <h3>Medios de pago</h3>
+          <p class="texto-pago">
+            La cotización final será confirmada por WhatsApp. Puedes reservar o realizar
+            anticipos por transferencia, Nequi, Daviplata o el medio acordado con la empresa.
+          </p>
+
+          <div class="medios-pago-lista">
+            <span class="medio-tag">WhatsApp</span>
+            <span class="medio-tag">Transferencia</span>
+            <span class="medio-tag">Nequi</span>
+            <span class="medio-tag">Daviplata</span>
+            <span class="medio-tag">Anticipo</span>
+          </div>
+        </div>
       </aside>
     </main>
 
+    <section class="beneficios-section">
+      <div class="seccion-titulo">
+        <h2>¿Por qué elegirnos?</h2>
+      </div>
+
+      <div class="beneficios-grid">
+        <article class="beneficio-card">
+          <span class="icono-beneficio">✨</span>
+          <h3>Presentación elegante</h3>
+          <p>Espacios organizados con una imagen estética y sobria para distintas celebraciones.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span class="icono-beneficio">🎀</span>
+          <h3>Decoración adaptable</h3>
+          <p>Nos ajustamos al estilo de tu evento para ofrecer una ambientación armoniosa.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span class="icono-beneficio">🤝</span>
+          <h3>Atención cercana</h3>
+          <p>Brindamos acompañamiento durante el proceso de reserva y organización del servicio.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span class="icono-beneficio">🔒</span>
+          <h3>Reserva confiable</h3>
+          <p>Te acompañamos en la confirmación de disponibilidad, condiciones y cotización final.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="paquetes-section">
+      <div class="seccion-titulo">
+        <h2>Paquetes sugeridos</h2>
+      </div>
+
+      <p class="texto-seccion">
+        Estos paquetes son una guía inicial. Cada evento puede personalizarse según el número
+        de invitados, decoración, lugar, fecha y servicios requeridos.
+      </p>
+
+      <div class="paquetes-grid">
+        <article class="paquete-card">
+          <h3>Evento empresarial básico</h3>
+          <p>Incluye espacio, ambientación corporativa y apoyo logístico básico.</p>
+          <strong>Desde $950.000</strong>
+        </article>
+
+        <article class="paquete-card">
+          <h3>Cumpleaños especial</h3>
+          <p>Incluye mesa principal, decoración temática y montaje del espacio.</p>
+          <strong>Desde $420.000</strong>
+        </article>
+
+        <article class="paquete-card">
+          <h3>Boda elegante</h3>
+          <p>Incluye espacio, decoración base, ambientación y acompañamiento inicial.</p>
+          <strong>Desde $850.000</strong>
+        </article>
+      </div>
+    </section>
+
+    <section class="recomendados-section">
+      <div class="seccion-titulo">
+        <h2 id="titulo-recomendados">Servicios recomendados</h2>
+      </div>
+      <p class="texto-seccion">
+        Te mostramos opciones destacadas según la categoría que más consultes dentro de la tienda.
+      </p>
+      <div id="recomendados" class="recomendados-grid"></div>
+    </section>
+
+    <section class="ranking-elo">
+      <div class="seccion-titulo">
+        <h2>Top de la tienda</h2>
+        <button class="reset-elo" onclick="reiniciarElo()">Reiniciar ranking</button>
+      </div>
+      <div id="top-elo" class="carrusel-top"></div>
+    </section>
+
+    <section class="duelo-section">
+      <h2>Duelo de servicios</h2>
+      <p class="texto-seccion">
+        Vota por la opción que más te guste y ayuda a construir el ranking del sitio.
+      </p>
+      <div id="duelo-container" class="duelo-container"></div>
+    </section>
+
+    <section class="redes-section">
+      <div class="seccion-titulo">
+        <h2>Síguenos en redes sociales</h2>
+      </div>
+
+      <p class="texto-seccion">
+        Conoce nuestros eventos, decoraciones, montajes y novedades.
+      </p>
+
+      <div class="redes-grid">
+        <a href="AQUI_TU_LINK_DE_INSTAGRAM" target="_blank" class="red-social instagram">📸 Instagram</a>
+        <a href="AQUI_TU_LINK_DE_FACEBOOK" target="_blank" class="red-social facebook">📘 Facebook</a>
+        <a href="AQUI_TU_LINK_DE_TIKTOK" target="_blank" class="red-social tiktok">🎵 TikTok</a>
+        <a href="https://wa.me/573172930703" target="_blank" class="red-social whatsapp-red">💬 WhatsApp</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h3>Casa de Eventos Golden Dream G y T</h3>
+        <p>
+          Un lugar pensado para celebrar con estilo, organización y una experiencia confiable
+          para tus momentos importantes.
+        </p>
+      </div>
+
+      <div>
+        <p>📍 Cobertura: Bogotá y alrededores</p>
+        <p>📲 Teléfono: 317 2930703</p>
+        <p>📧 Correo: goldendreamgyt@gmail.com</p>
+      </div>
+    </footer>
   </div>
 
   <script src="script.js"></script>
