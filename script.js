@@ -144,7 +144,6 @@ function renderProductos(lista = productos) {
   lista.forEach(prod => {
     const div = document.createElement("article");
     div.className = "producto";
-
     const incluyeHTML = prod.incluye.map(item => `<li>${item}</li>`).join("");
 
     div.innerHTML = `
@@ -390,6 +389,21 @@ function actualizarElo(ganadorId, perdedorId) {
   guardarRatings();
 }
 
+function obtenerEtiquetaRanking(index) {
+  const etiquetas = [
+    "🔥 Más solicitado",
+    "⭐ Recomendado",
+    "💎 Destacado",
+    "✨ Favorito",
+    "🎉 Buena opción",
+    "🌟 Popular",
+    "🤝 Ideal para eventos",
+    "📋 Cotización frecuente"
+  ];
+
+  return etiquetas[index] || "Servicio destacado";
+}
+
 function renderTopElo() {
   if (!topElo) return;
 
@@ -406,7 +420,7 @@ function renderTopElo() {
         <span class="badge-ranking">#${index + 1}</span>
         <h3>${producto.nombre}</h3>
         <p>${producto.categoria}</p>
-        <p class="elo-score">Puntaje: ${ratings[producto.id]}</p>
+        <p class="elo-score">${obtenerEtiquetaRanking(index)}</p>
       </div>
     `;
 
@@ -431,15 +445,15 @@ function generarDuelo() {
     <div class="duelo-card">
       <img src="${p1.img}" alt="${p1.nombre}" onerror="this.src='https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80'">
       <h3>${p1.nombre}</h3>
-      <p>Reserva disponible · Puntaje ${ratings[p1.id]}</p>
-      <button onclick="votarDuelo(${p1.id}, ${p2.id})">Elegir este</button>
+      <p>Ayúdanos a saber qué servicio prefieren los clientes</p>
+      <button onclick="votarDuelo(${p1.id}, ${p2.id})">Me gusta más este</button>
     </div>
 
     <div class="duelo-card">
       <img src="${p2.img}" alt="${p2.nombre}" onerror="this.src='https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=80'">
       <h3>${p2.nombre}</h3>
-      <p>Reserva disponible · Puntaje ${ratings[p2.id]}</p>
-      <button onclick="votarDuelo(${p2.id}, ${p1.id})">Elegir este</button>
+      <p>Ayúdanos a saber qué servicio prefieren los clientes</p>
+      <button onclick="votarDuelo(${p2.id}, ${p1.id})">Me gusta más este</button>
     </div>
   `;
 }
