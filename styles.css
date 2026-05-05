@@ -855,4 +855,16 @@ select {
     padding: 18px;
     border-radius: 20px;
   }
+  .nota {
+  font-size: 0.85rem;
+  color: gray;
+  margin-top: 10px;
+  }
+
+.carrito button {
+  margin-top: 10px;
+  background: #25d366;
+  color: white;
+  }
+  
 }
